@@ -1,0 +1,69 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import creativityTools from "../creativity-tools.json";
+---
+
+<Layout title="Let's Get Creative">
+  <main>
+    <h1>Let's get <span class="text-gradient">Creative</span></h1>
+    <ul role="list">
+      {
+        creativityTools.map((tool) => (
+          <li class="my-8">
+            <a href={tool.link}>
+              <h3>{tool.name}</h3>
+              <p>{tool.description}</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <ul role="list" class="link-card-grid">
+      <Card
+        href="https://docs.astro.build/"
+        title="Documentation"
+        body="Learn how Astro works and explore the official API docs."
+      />
+      <Card
+        href="https://astro.build/integrations/"
+        title="Integrations"
+        body="Supercharge your project with new frameworks and libraries."
+      />
+      <Card
+        href="https://astro.build/themes/"
+        title="Themes"
+        body="Explore a galaxy of community-built starter themes."
+      />
+      <Card
+        href="https://astro.build/chat/"
+        title="Community"
+        body="Come say hi to our amazing Discord community. ❤️"
+      />
+    </ul>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    font-size: 20px;
+    line-height: 1.6;
+  }
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 2rem;
+    padding: 0;
+  }
+</style>
