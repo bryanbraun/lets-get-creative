@@ -1,13 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+import Header from "../components/Header.jsx";
 import creativityTools from "../creativity-tools.json";
 ---
 
 <Layout title="Let's Get Creative">
-  <header>
-    <h1>Let's Get Creative</h1>
-  </header>
+  <!-- TODO: Update so the header renders server-side but the tldraw app renders client-side -->
+  <Header client:only="react" />
+
   <main>
     <ul role="list">
       {
@@ -54,9 +55,6 @@ import creativityTools from "../creativity-tools.json";
     max-width: calc(100% - 2rem);
     font-size: 20px;
     line-height: 1.6;
-  }
-  h1 {
-    text-align: center;
   }
   .link-card-grid {
     display: grid;

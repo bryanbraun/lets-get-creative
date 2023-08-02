@@ -24,7 +24,12 @@ const { href, title, body } = Astro.props;
     list-style: none;
     display: flex;
     padding: 1px;
-    border-radius: 7px;
+    border-style: solid;
+    border-width: 40px 40px 40px 40px;
+    -moz-border-image: url(box_1.svg) 40 40 40 40 stretch stretch;
+    -webkit-border-image: url(box_1.svg) 40 40 40 40 stretch stretch;
+    -o-border-image: url(box_1.svg) 40 40 40 40 stretch stretch;
+    border-image: url(box_1.svg) 40 40 40 40 stretch stretch;
   }
   .link-card > a {
     padding: calc(1.5rem - 1px);
