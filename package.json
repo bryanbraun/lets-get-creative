@@ -9,16 +9,18 @@
     "preview": "astro preview",
     "astro": "astro"
   },
-  "dependencies": {
+  "devDependencies": {
     "@astrojs/react": "^2.2.1",
     "@astrojs/tailwind": "^4.0.0",
+    "@loadable/component": "^5.15.3",
+    "@tldraw/tldraw": "^2.0.0-alpha.14",
     "@types/react": "^18.2.18",
     "@types/react-dom": "^18.2.7",
+    "@types/loadable__component": "^5.13.4",
     "astro": "^2.9.6",
     "nuka-carousel": "^6.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwindcss": "^3.3.3",
-    "@tldraw/tldraw": "^2.0.0-alpha.14"
+    "tailwindcss": "^3.3.3"
   }
 }

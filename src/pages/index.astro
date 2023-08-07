@@ -6,8 +6,8 @@ import creativityTools from "../creativity-tools.json";
 ---
 
 <Layout title="Let's Get Creative">
-  <!-- TODO: Update so the header renders server-side but the tldraw app renders client-side -->
-  <Header client:only="react" />
+  <!-- The header renders server-side (at build time) and is hydrated client-side -->
+  <Header client:load />
 
   <main>
     <ul role="list">
@@ -15,7 +15,7 @@ import creativityTools from "../creativity-tools.json";
         creativityTools.map((tool) => (
           <li class="my-8">
             <a href={tool.link}>
-              <h3>{tool.name}</h3>
+              <h3 class="text-lg font-bold">{tool.name}</h3>
               <p>{tool.description}</p>
             </a>
           </li>
@@ -53,8 +53,6 @@ import creativityTools from "../creativity-tools.json";
     padding: 1rem;
     width: 800px;
     max-width: calc(100% - 2rem);
-    font-size: 20px;
-    line-height: 1.6;
   }
   .link-card-grid {
     display: grid;
