@@ -14,6 +14,10 @@ export default {
 		lineHeight: {
 			"leading-normal": 1.625
 		},
+		zIndex: {
+			// 'carousel': '1', // This is found in the carousel component
+			'title': '10',
+		},
 		extend: {
 		},
 	},

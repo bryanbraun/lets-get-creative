@@ -9,8 +9,6 @@ import '@tldraw/tldraw/ui.css'
 
 export default function TldrawWrapper () {
   return (
-    <div className="tldraw__editor">
-      <Tldraw persistenceKey="tldraw_example" autoFocus />
-    </div>
+    <Tldraw persistenceKey="tldraw_example" autoFocus />
   );
 }

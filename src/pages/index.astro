@@ -10,10 +10,10 @@ import creativityTools from "../creativity-tools.json";
   <Header client:load />
 
   <main>
-    <ul role="list">
+    <ul role="list" class="flex flex-wrap justify-center">
       {
         creativityTools.map((tool) => (
-          <li class="my-8">
+          <li class="flex-initial w-1/2 p-4 card-border">
             <a href={tool.link}>
               <h3 class="text-lg font-bold">{tool.name}</h3>
               <p>{tool.description}</p>
@@ -21,28 +21,6 @@ import creativityTools from "../creativity-tools.json";
           </li>
         ))
       }
-    </ul>
-    <ul role="list" class="link-card-grid">
-      <Card
-        href="https://docs.astro.build/"
-        title="Documentation"
-        body="Learn how Astro works and explore the official API docs."
-      />
-      <Card
-        href="https://astro.build/integrations/"
-        title="Integrations"
-        body="Supercharge your project with new frameworks and libraries."
-      />
-      <Card
-        href="https://astro.build/themes/"
-        title="Themes"
-        body="Explore a galaxy of community-built starter themes."
-      />
-      <Card
-        href="https://astro.build/chat/"
-        title="Community"
-        body="Come say hi to our amazing Discord community. ❤️"
-      />
     </ul>
   </main>
 </Layout>
@@ -54,10 +32,18 @@ import creativityTools from "../creativity-tools.json";
     width: 800px;
     max-width: calc(100% - 2rem);
   }
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 2rem;
-    padding: 0;
+  /*
+    Do we move this into a tailwind component class?
+      see: https://tailwindcss.com/docs/adding-custom-styles#adding-component-classes
+    Do I make a separate astro component, just so the styles are colocated with the jsx?
+      tailwind seems to prefer using the global stylesheet... see: https://tailwindcss.com/docs/adding-custom-styles#layers-and-per-component-css
+  */
+  .card-border {
+    border-style: solid;
+    border-width: 40px 40px 40px 40px;
+    -moz-border-image: url(box_1.svg) 40 40 40 40 stretch stretch;
+    -webkit-border-image: url(box_1.svg) 40 40 40 40 stretch stretch;
+    -o-border-image: url(box_1.svg) 40 40 40 40 stretch stretch;
+    border-image: url(box_1.svg) 40 40 40 40 stretch stretch;
   }
 </style>
