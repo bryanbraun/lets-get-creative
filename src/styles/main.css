@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 18px;
+  }
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  .card-border {
+    -moz-border-image: url(full-box.svg) 20 20 20 20 stretch stretch;
+    -webkit-border-image: url(full-box.svg) 20 20 20 20 stretch stretch;
+    -o-border-image: url(full-box.svg) 20 20 20 20 stretch stretch;
+    border-image: url(full-box.svg) 20 20 20 20 stretch stretch;
+    border-width: 20px 20px 20px 20px;
+    border-style: solid;
+  }
+}

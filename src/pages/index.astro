@@ -1,20 +1,39 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 import Header from "../components/Header.jsx";
 import creativityTools from "../creativity-tools.json";
+
+const title = "Let's Get Creative";
+const description =
+  "A collection of high-quality, free, online creativity tools.";
 ---
 
-<Layout title="Let's Get Creative">
+<Layout title={title} description={description}>
   <!-- The header renders server-side (at build time) and is hydrated client-side -->
-  <Header client:load />
+  <Header client:load title={title} />
 
   <main>
+    <section class="my-8 px-3">
+      <h2 class="text-2xl text-center">
+        {description}
+      </h2>
+      <details class="mt-3">
+        <summary class="text-sm text-center underline cursor-pointer">
+          tell me more
+        </summary>
+        <div>more!</div>
+      </details>
+    </section>
+
     <ul role="list" class="flex flex-wrap justify-center">
       {
         creativityTools.map((tool) => (
-          <li class="flex-initial w-1/2 p-4 card-border">
+          <li class="flex-initial md:w-1/2 p-2 card-border">
             <a href={tool.link}>
+              <img
+                src={tool.image || "creativity-tools/default.png"}
+                alt={tool.name}
+              />
               <h3 class="text-lg font-bold">{tool.name}</h3>
               <p>{tool.description}</p>
             </a>
@@ -23,27 +42,29 @@ import creativityTools from "../creativity-tools.json";
       }
     </ul>
   </main>
+
+  <footer class="text-center my-6">
+    <p>
+      Made by
+      <a href="https://bryanbraun.com" class="underline" target="_blank">
+        Bryan Braun
+      </a>
+    </p>
+    <p>
+      This site is <a
+        class="underline"
+        href="https://github.com/bryanbraun/lets-get-creative"
+        target="_blank">open source</a
+      >.
+    </p>
+  </footer>
 </Layout>
 
 <style>
   main {
     margin: auto;
     padding: 1rem;
-    width: 800px;
+    width: 1200px;
     max-width: calc(100% - 2rem);
-  }
-  /*
-    Do we move this into a tailwind component class?
-      see: https://tailwindcss.com/docs/adding-custom-styles#adding-component-classes
-    Do I make a separate astro component, just so the styles are colocated with the jsx?
-      tailwind seems to prefer using the global stylesheet... see: https://tailwindcss.com/docs/adding-custom-styles#layers-and-per-component-css
-  */
-  .card-border {
-    border-style: solid;
-    border-width: 40px 40px 40px 40px;
-    -moz-border-image: url(box_1.svg) 40 40 40 40 stretch stretch;
-    -webkit-border-image: url(box_1.svg) 40 40 40 40 stretch stretch;
-    -o-border-image: url(box_1.svg) 40 40 40 40 stretch stretch;
-    border-image: url(box_1.svg) 40 40 40 40 stretch stretch;
   }
 </style>
