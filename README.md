@@ -2,7 +2,11 @@
 
 Details coming soon...
 
-## Commands
+## Contributing a creativity tool?
+
+See (CONTRIBUTING.md)[CONTRIBUTING.md].
+
+## Running this site
 
 All commands are run from the root of the project, from a terminal:
 

@@ -2,20 +2,17 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.jsx";
 import creativityTools from "../creativity-tools.json";
-
-const title = "Let's Get Creative";
-const description =
-  "A collection of high-quality, free, online creativity tools.";
+import metadata from "../site-metadata.json";
 ---
 
-<Layout title={title} description={description}>
+<Layout title={metadata.title} description={metadata.description}>
   <!-- The header renders server-side (at build time) and is hydrated client-side -->
-  <Header client:load title={title} />
+  <Header client:load title={metadata.title} />
 
   <main>
     <section class="my-8 px-3">
       <h2 class="text-2xl text-center">
-        {description}
+        {metadata.description}
       </h2>
       <details class="mt-3">
         <summary class="text-sm text-center underline cursor-pointer">
@@ -34,14 +31,40 @@ const description =
                 src={tool.image || "creativity-tools/default.png"}
                 alt={tool.name}
               />
-              <h3 class="text-lg font-bold">{tool.name}</h3>
+              <h3 class="text-lg mt-2 font-bold">{tool.name}</h3>
               <p>{tool.description}</p>
             </a>
           </li>
         ))
       }
     </ul>
+
+    <div class="my-12 space-y-4 text-center">
+      <p>
+        I'm adding new creativity tools as I find them. Subscribe to updates
+        <a class="underline" href="rss.xml" target="_blank">
+          via our RSS feed</a
+        >.
+        <span class="text-xs">
+          <a class="underline" href="https://aboutfeeds.com/" target="_blank">
+            [what is this?]
+          </a>
+        </span>
+      </p>
+      <p>
+        Want to recommend a tool for this site?
+        <a
+          class="underline"
+          href="https://github.com/bryanbraun/lets-get-creative/blob/main/CONTRIBUTING.md"
+          target="_blank"
+        >
+          You can do that here</a
+        >.
+      </p>
+    </div>
   </main>
+
+  <hr />
 
   <footer class="text-center my-6">
     <p>
