@@ -4,7 +4,7 @@ Details coming soon...
 
 ## Contributing a creativity tool?
 
-See (CONTRIBUTING.md)[CONTRIBUTING.md].
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Running this site
 

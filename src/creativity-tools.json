@@ -31,14 +31,14 @@
     "name": "Choo Choo World",
     "description": "A 3D wooden train track builder.",
     "link": "https://choochooworld.com/",
-    "image": "",
+    "image": "creativity-tools/choo-choo-world.png",
     "dateAdded": "2023-08-12"
   },
   {
     "name": "IsoCity",
     "description": "Build tiny isometric cities from a pallette of simple tiles.",
     "link": "https://victorribeiro.com/isocity/",
-    "image": "",
+    "image": "creativity-tools/isocity.png",
     "dateAdded": "2023-08-12"
   },
   {
@@ -129,14 +129,14 @@
     "name": "Beepbox",
     "description": "BeepBox is an online tool for sketching and sharing instrumental music.",
     "link": "https://www.beepbox.co/",
-    "image": "",
+    "image": "creativity-tools/beepbox.png",
     "dateAdded": "2023-08-12"
   },
   {
     "name": "Music Box Fun",
     "description": "Make and share music box songs online.",
     "link": "https://musicbox.fun/",
-    "image": "",
+    "image": "creativity-tools/music-box-fun.png",
     "dateAdded": "2023-08-12"
   },
   {
