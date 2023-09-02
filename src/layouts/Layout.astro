@@ -21,9 +21,9 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link
       rel="alternate"
-      type="application/rss+xml"
-      href="rss.xml"
-      title="RSS 2.0"
+      type="application/feed+json"
+      title={title}
+      href="feed.json"
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>

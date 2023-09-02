@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.jsx";
-import creativityTools from "../creativity-tools.json";
+import creativityTools from "../../public/creativity-tools/data.json";
 import metadata from "../site-metadata.json";
 ---
 
@@ -28,7 +28,7 @@ import metadata from "../site-metadata.json";
           <li class="flex-initial md:w-1/2 p-2 card-border">
             <a href={tool.link}>
               <img
-                src={tool.image || "creativity-tools/default.png"}
+                src={"creativity-tools/" + (tool.image ?? "default.png")}
                 alt={tool.name}
               />
               <h3 class="text-lg mt-2 font-bold">{tool.name}</h3>
@@ -42,9 +42,25 @@ import metadata from "../site-metadata.json";
     <div class="my-12 space-y-4 text-center">
       <p>
         I'm adding new creativity tools as I find them. Subscribe to updates
-        <a class="underline" href="rss.xml" target="_blank">
-          via our RSS feed</a
-        >.
+        <a href="feed.json" target="_blank">
+          <span class="underline">via our feed</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            version="1.1"
+            x="0px"
+            y="0px"
+            viewBox="0 0 120 120"
+            width="20"
+            height="20"
+            class="inline-block"
+          >
+            <path
+              fill="rgb(250,140,8)"
+              d="M25.4,74.569c2.18,2.177,3.506,5.131,3.514,8.42c-0.008,3.283-1.334,6.237-3.506,8.406L25.4,91.399  c-2.176,2.166-5.148,3.49-8.453,3.49c-3.301,0-6.266-1.328-8.441-3.494C6.336,89.227,5,86.276,5,82.989  c0-3.289,1.336-6.25,3.506-8.423v0.003c2.176-2.168,5.141-3.502,8.441-3.502C20.252,71.067,23.221,72.404,25.4,74.569z M25.4,74.566  v0.003c0.004,0,0.004,0,0.004,0L25.4,74.566z M8.506,91.399c0,0,0,0,0-0.004c-0.004,0-0.004,0-0.004,0L8.506,91.399z M5.01,35.604  v17.185c11.219,0.007,21.83,4.414,29.771,12.367c7.939,7.928,12.328,18.555,12.346,29.813h0.006V95h17.256  c-0.014-16.37-6.668-31.198-17.426-41.964C36.203,42.272,21.381,35.614,5.01,35.604z M5.041,5v17.177  C45.145,22.206,77.746,54.858,77.773,95H95c-0.012-24.81-10.096-47.288-26.393-63.596C52.305,15.101,29.842,5.011,5.041,5z"
+            ></path>
+          </svg>
+        </a>
         <span class="text-xs">
           <a class="underline" href="https://aboutfeeds.com/" target="_blank">
             [what is this?]
