@@ -26,9 +26,9 @@ import metadata from "../site-metadata.json";
       {
         creativityTools.map((tool) => (
           <li class="flex-initial md:w-1/2 p-2 card-border">
-            <a href={tool.link}>
+            <a href={tool.link} target="_blank">
               <img
-                src={"creativity-tools/" + (tool.image ?? "default.png")}
+                src={"creativity-tools/" + (tool.image || "default.png")}
                 alt={tool.name}
               />
               <h3 class="text-lg mt-2 font-bold">{tool.name}</h3>
