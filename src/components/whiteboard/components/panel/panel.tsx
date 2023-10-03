@@ -1,7 +1,6 @@
 import * as React from 'react'
 import styles from './panel.module.css'
 import { app, useAppState } from '../../state'
-import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 
 export function Panel() {
   // const tool = useAppState((s) => s.appState.tool)
@@ -9,8 +8,8 @@ export function Panel() {
   return (
     <>
       <div className={[styles.container, styles.top, styles.left].join(' ')}>
-        <a onClick={app.togglePanelOpen}>
-          <HamburgerMenuIcon height={24} width={24} color="black" />
+        <a className="px-8" onClick={app.togglePanelOpen}>
+          Options
         </a>
       </div>
       <div className={[styles.container, styles.bottom, styles.left].join(' ')}>

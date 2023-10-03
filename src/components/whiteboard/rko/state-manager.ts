@@ -1,6 +1,5 @@
 import { createStore as createVanilla} from 'zustand/vanilla'
 import { create, UseStore, StoreApi } from 'zustand'
-import * as idb from 'idb-keyval'
 import { deepCopy } from './copy'
 import { merge } from './merge'
 import type { Patch, Command } from './types'
