@@ -7,11 +7,6 @@ import type { Patch, Command } from './types'
 
 export class StateManager<T extends object> {
   /**
-   * An ID used to persist state in indexdb.
-   */
-  protected _idbId?: string
-
-  /**
    * The initial state.
    */
   private initialState: T
@@ -32,11 +27,6 @@ export class StateManager<T extends object> {
   private _state: T
 
   /**
-   * The state manager's current status, with regard to restoring persisted state.
-   */
-  private _status: 'loading' | 'ready' = 'loading'
-
-  /**
    * A stack of commands used for history (undo and redo).
    */
   protected stack: Command<T>[] = []
@@ -51,88 +41,22 @@ export class StateManager<T extends object> {
    */
   public readonly useStore: UseStore<T>
 
-  /**
-   * A promise that will resolve when the state manager has loaded any peristed state.
-   */
-  public ready: Promise<'none' | 'restored' | 'migrated'>
-
   constructor(
     initialState: T,
     id?: string,
     version?: number,
     update?: (prev: T, next: T, prevVersion: number) => T
   ) {
-    this._idbId = id
     this._state = deepCopy(initialState)
     this._snapshot = deepCopy(initialState)
     this.initialState = deepCopy(initialState)
     this.store = createVanilla(() => this._state)
     this.useStore = create(this.store)
-
-    this.ready = new Promise<'none' | 'restored' | 'migrated'>((resolve) => {
-      let message: 'none' | 'restored' | 'migrated' = 'none'
-
-      if (this._idbId) {
-        message = 'restored'
-
-        idb
-          .get(this._idbId)
-          .then(async (saved) => {
-            if (saved) {
-              let next = saved
-
-              if (version) {
-                let savedVersion = await idb.get<number>(id + '_version')
-
-                if (savedVersion && savedVersion < version) {
-                  next = update ? update(saved, initialState, savedVersion) : initialState
-
-                  message = 'migrated'
-                }
-              }
-
-              await idb.set(id + '_version', version || -1)
-
-              this._state = deepCopy(next)
-              this._snapshot = deepCopy(next)
-              this.store.setState(this._state, true)
-            } else {
-              await idb.set(id + '_version', version || -1)
-            }
-            this._status = 'ready'
-            resolve(message)
-          })
-          .catch((e) => console.error(e))
-      } else {
-        // We need to wait for any override to `onReady` to take effect.
-        this._status = 'ready'
-        resolve(message)
-      }
-
-      resolve(message)
-    }).then((message) => {
-      if (this.onReady) this.onReady(message)
-      return message
-    })
-  }
-
-  /**
-   * Save the current state to indexdb.
-   */
-  protected persist = (id?: string): void | Promise<void> => {
-    if (this.onPersist) {
-      this.onPersist(this._state, id)
-    }
-
-    if (this._idbId) {
-      return idb.set(this._idbId, this._state).catch((e) => console.error(e))
-    }
   }
 
   /**
    * Apply a patch to the current state.
    * This does not effect the undo/redo stack.
-   * This does not persist the state.
    * @param patch The patch to apply.
    * @param id (optional) An id for the patch.
    */
@@ -181,7 +105,6 @@ export class StateManager<T extends object> {
   /**
    * Apply a patch to the current state.
    * This does not effect the undo/redo stack.
-   * This does not persist the state.
    * @param patch The patch to apply.
    * @param id (optional) An id for this patch.
    */
@@ -196,7 +119,6 @@ export class StateManager<T extends object> {
   /**
    * Replace the current state.
    * This does not effect the undo/redo stack.
-   * This does not persist the state.
    * @param state The new state.
    * @param id An id for this change.
    */
@@ -216,7 +138,6 @@ export class StateManager<T extends object> {
   /**
    * Update the state using a Command.
    * This effects the undo/redo stack.
-   * This persists the state.
    * @param command The command to apply and add to the undo/redo stack.
    * @param id (optional) An id for this command.
    */
@@ -228,17 +149,10 @@ export class StateManager<T extends object> {
     this.pointer = this.stack.length - 1
     this.applyPatch(command.after, id)
     if (this.onCommand) this.onCommand(this._state, id)
-    this.persist(id)
     return this
   }
 
   // Public API ---------------------------------
-
-  /**
-   * A callback fired when the constructor finishes loading any
-   * persisted data.
-   */
-  protected onReady?: (message: 'none' | 'restored' | 'migrated') => void
 
   /**
    * A callback fired when a patch is applied.
@@ -249,11 +163,6 @@ export class StateManager<T extends object> {
    * A callback fired when a patch is applied.
    */
   public onCommand?: (state: T, id?: string) => void
-
-  /**
-   * A callback fired when the state is persisted.
-   */
-  public onPersist?: (state: T, id?: string) => void
 
   /**
    * A callback fired when the state is replaced.
@@ -290,7 +199,6 @@ export class StateManager<T extends object> {
     this._state = this.initialState
     this.store.setState(this._state, true)
     this.resetHistory()
-    this.persist('reset')
     if (this.onStateDidChange) {
       this.onStateDidChange(this._state, 'reset')
     }
@@ -335,7 +243,6 @@ export class StateManager<T extends object> {
     const command = this.stack[this.pointer]
     this.pointer--
     this.applyPatch(command.before, `undo`)
-    this.persist('undo')
     if (this.onUndo) this.onUndo(this._state)
     return this
   }
@@ -348,7 +255,6 @@ export class StateManager<T extends object> {
     this.pointer++
     const command = this.stack[this.pointer]
     this.applyPatch(command.after, 'redo')
-    this.persist('undo')
     if (this.onRedo) this.onRedo(this._state)
     return this
   }
@@ -387,13 +293,6 @@ export class StateManager<T extends object> {
    */
   public get state(): T {
     return this._state
-  }
-
-  /**
-   * The current status.
-   */
-  public get status(): string {
-    return this._status
   }
 
   /**

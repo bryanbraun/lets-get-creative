@@ -12,7 +12,7 @@ export default function Header({ title }) {
         {title}
       </h1>
 
-      <div className="h-96">
+      <div className="h-whiteboard">
         <LoadableWhiteboard />
       </div>
     </header>

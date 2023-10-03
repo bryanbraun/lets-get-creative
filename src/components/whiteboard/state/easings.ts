@@ -1,4 +1,4 @@
-import type { Easing } from 'types'
+import type { Easing } from '../types'
 
 export const EASINGS: Record<Easing, (t: number) => number> = {
   linear: (t) => t,

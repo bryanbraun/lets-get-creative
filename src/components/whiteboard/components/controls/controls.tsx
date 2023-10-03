@@ -393,14 +393,17 @@ export function Controls() {
         <button className={styles.rowButton} onClick={app.resetStyles}>
           Reset Options
         </button>
-        <button className={styles.rowButton} onClick={app.copyStyles}>
-          Copy Options
+        <button className={styles.rowButton} onClick={app.copyShapes}>
+          Copy Shapes Data
         </button>
       </div>
       <hr />
       <div className={styles.buttonsRow}>
         <button className={styles.rowButton} onClick={app.copySvg}>
           Copy to SVG
+        </button>
+        <button className={styles.rowButton} onClick={app.downloadSvg}>
+          Download SVG
         </button>
       </div>
     </div>

@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --whiteboard-height: 400px; /* keep in px, bc we parse this value in js */
+  }
   html {
     font-size: 18px;
   }

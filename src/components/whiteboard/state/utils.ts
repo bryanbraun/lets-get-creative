@@ -19,6 +19,73 @@ export function pointInPolygon(p: number[], points: number[][]): boolean {
   return wn !== 0
 }
 
+export function getSvgString(shapes, bounds) {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+  const padding = 40
+
+  shapes.forEach(shape => {
+    const fillElm = document.getElementById('path_' + shape.id)
+
+    if (!fillElm) return
+
+    const fillClone = fillElm.cloneNode(false) as SVGPathElement
+
+    const strokeElm = document.getElementById('path_stroke_' + shape.id)
+
+    if (strokeElm) {
+      // Create a new group
+      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g')
+
+      // Translate the group to the shape's point
+      g.setAttribute(
+        'transform',
+        `translate(${shape.point[0]}, ${shape.point[1]})`
+      )
+
+      // Clone the stroke element
+      const strokeClone = strokeElm.cloneNode(false) as SVGPathElement
+
+      // Append both the stroke element and the fill element to the group
+      g.appendChild(strokeClone)
+      g.appendChild(fillClone)
+
+      // Append the group to the SVG
+      svg.appendChild(g)
+    } else {
+      // Translate the fill clone and append it to the SVG
+      fillClone.setAttribute(
+        'transform',
+        `translate(${shape.point[0]}, ${shape.point[1]})`
+      )
+
+      svg.appendChild(fillClone)
+    }
+  })
+
+  // Resize the element to the bounding box
+  svg.setAttribute(
+    'viewBox',
+    [
+      bounds.minX - padding,
+      bounds.minY - padding,
+      bounds.width + padding * 2,
+      bounds.height + padding * 2,
+    ].join(' ')
+  )
+
+  svg.setAttribute('width', String(bounds.width))
+  svg.setAttribute('height', String(bounds.height))
+
+  const s = new XMLSerializer()
+
+  const svgString = s
+    .serializeToString(svg)
+    .replaceAll('&#10;      ', '')
+    .replaceAll(/((\s|")[0-9]*\.[0-9]{2})([0-9]*)(\b|"|\))/g, '$1')
+
+  return svgString
+};
+
 export function copyTextToClipboard(string: string) {
   try {
     navigator.clipboard.writeText(string)
@@ -52,4 +119,13 @@ export function copyTextToClipboard(string: string) {
       document.body.removeChild(textarea)
     }
   }
+}
+
+// Use css variable dimensions, if they exist. Otherwise fall back to the window dimensions. This allows for non-fullscreen whiteboards.
+export function getAppWidth() {
+  return parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--whiteboard-width')) || window.innerWidth
+}
+
+export function getAppHeight() {
+  return parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--whiteboard-height')) || window.innerHeight
 }

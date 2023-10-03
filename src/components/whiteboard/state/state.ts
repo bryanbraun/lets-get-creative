@@ -12,7 +12,7 @@ import { StateManager } from '../rko'
 import { draw, DrawUtil } from './shapes'
 import sample from './sample.json'
 import type { StateSelector } from 'zustand'
-import { copyTextToClipboard, pointInPolygon } from './utils'
+import { copyTextToClipboard, pointInPolygon, getSvgString, getAppWidth, getAppHeight } from './utils'
 import { EASING_STRINGS } from './easings'
 
 export const shapeUtils: TLShapeUtilsMap<DrawShape> = {
@@ -59,7 +59,7 @@ export const initialState: State = {
     tool: 'drawing',
     editingId: undefined,
     style: defaultStyle,
-    isPanelOpen: true,
+    isPanelOpen: false,
   },
   ...initialDoc,
 }
@@ -67,6 +67,21 @@ export const initialState: State = {
 export const context = React.createContext<AppState>({} as AppState)
 
 export class AppState extends StateManager<State> {
+  constructor(...args: ConstructorParameters<typeof StateManager<State>>) {
+    super(...args);
+
+    // ON READY
+    window['app'] = this
+    // We assert the type because it's imported from JSON
+    const sampleData = sample as Partial<DrawShape>[];
+    if (Object.values(this.state.page.shapes).length === 0) {
+      sampleData.forEach(shape => {
+        this.addShape(shape)
+      })
+      this.zoomToContent()
+    }
+  }
+
   shapeUtils = shapeUtils
 
   log = false
@@ -75,20 +90,10 @@ export class AppState extends StateManager<State> {
     startTime: 0,
   }
 
-  onReady = () => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    window['app'] = this
-
-    if (Object.values(this.state.page.shapes).length === 0) {
-      this.addShape({ id: 'sample', points: sample })
-      this.centerShape('sample')
-    }
-  }
-
   cleanup = (state: State) => {
     for (const id in state.page.shapes) {
       if (!state.page.shapes[id]) {
+        // Removes any shapes that that have a falsy (undefined?) value
         delete state.page.shapes[id]
       }
     }
@@ -379,12 +384,13 @@ export class AppState extends StateManager<State> {
   centerShape = (id: string) => {
     const shape = this.state.page.shapes[id]
     const bounds = shapeUtils.draw.getBounds(this.state.page.shapes[id])
+
     this.patchState({
       pageState: {
         camera: {
           point: Vec.add(shape.point, [
-            window.innerWidth / 2 - bounds.width / 2,
-            window.innerHeight / 2 - bounds.height / 2,
+            getAppWidth() / 2 - bounds.width / 2,
+            getAppHeight() / 2 - bounds.height / 2,
           ]),
           zoom: 1,
         },
@@ -392,6 +398,7 @@ export class AppState extends StateManager<State> {
     })
   }
 
+  /* Currently Unused */
   replayShape = (points: number[][]) => {
     this.eraseAll()
 
@@ -457,8 +464,6 @@ export class AppState extends StateManager<State> {
         },
       },
     })
-
-    this.persist()
 
     return newShape
   }
@@ -673,8 +678,8 @@ export class AppState extends StateManager<State> {
     )
 
     const { zoom } = pageState.camera
-    const mx = (window.innerWidth - bounds.width * zoom) / 2 / zoom
-    const my = (window.innerHeight - bounds.height * zoom) / 2 / zoom
+    const mx = (getAppWidth() - bounds.width * zoom) / 2 / zoom
+    const my = (getAppHeight() - bounds.height * zoom) / 2 / zoom
     const point = Vec.round(Vec.add([-bounds.minX, -bounds.minY], [mx, my]))
 
     return this.patchState({
@@ -746,79 +751,40 @@ export class AppState extends StateManager<State> {
 }`)
   }
 
+  copyShapes = () => {
+    const simpleShapes = Object.values(this.state.page.shapes).map(shape => ({
+      id: shape.id,
+      point: shape.point,
+      points: shape.points,
+      style: shape.style,
+    }));
+
+    copyTextToClipboard(JSON.stringify(simpleShapes));
+  }
+
   copySvg = () => {
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-
     const shapes = Object.values(this.state.page.shapes)
-
     const bounds = Utils.getCommonBounds(shapes.map(draw.getBounds))
-
-    const padding = 40
-
-    shapes.forEach((shape) => {
-      const fillElm = document.getElementById('path_' + shape.id)
-
-      if (!fillElm) return
-
-      const fillClone = fillElm.cloneNode(false) as SVGPathElement
-
-      const strokeElm = document.getElementById('path_stroke_' + shape.id)
-
-      if (strokeElm) {
-        // Create a new group
-        const g = document.createElementNS('http://www.w3.org/2000/svg', 'g')
-
-        // Translate the group to the shape's point
-        g.setAttribute(
-          'transform',
-          `translate(${shape.point[0]}, ${shape.point[1]})`
-        )
-
-        // Clone the stroke element
-        const strokeClone = strokeElm.cloneNode(false) as SVGPathElement
-
-        // Append both the stroke element and the fill element to the group
-        g.appendChild(strokeClone)
-        g.appendChild(fillClone)
-
-        // Append the group to the SVG
-        svg.appendChild(g)
-      } else {
-        // Translate the fill clone and append it to the SVG
-        fillClone.setAttribute(
-          'transform',
-          `translate(${shape.point[0]}, ${shape.point[1]})`
-        )
-
-        svg.appendChild(fillClone)
-      }
-    })
-
-    // Resize the element to the bounding box
-    svg.setAttribute(
-      'viewBox',
-      [
-        bounds.minX - padding,
-        bounds.minY - padding,
-        bounds.width + padding * 2,
-        bounds.height + padding * 2,
-      ].join(' ')
-    )
-
-    svg.setAttribute('width', String(bounds.width))
-
-    svg.setAttribute('height', String(bounds.height))
-
-    const s = new XMLSerializer()
-
-    const svgString = s
-      .serializeToString(svg)
-      .replaceAll('&#10;      ', '')
-      .replaceAll(/((\s|")[0-9]*\.[0-9]{2})([0-9]*)(\b|"|\))/g, '$1')
+    const svgString = getSvgString(shapes, bounds)
 
     copyTextToClipboard(svgString)
+  }
 
-    return svgString
+  downloadSvg = () => {
+    const shapes = Object.values(this.state.page.shapes)
+    const bounds = Utils.getCommonBounds(shapes.map(draw.getBounds))
+    const svgString = getSvgString(shapes, bounds)
+
+    const element = document.createElement('a');
+    element.setAttribute('href', 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgString));
+    element.setAttribute('download', 'image.svg');
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
   }
 
   resetDoc = () => {

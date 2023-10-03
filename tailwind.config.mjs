@@ -19,6 +19,9 @@ export default {
 			'title': '10',
 		},
 		extend: {
+			height: {
+				"whiteboard": "var(--whiteboard-height)",
+			}
 		},
 	},
 	plugins: [],
