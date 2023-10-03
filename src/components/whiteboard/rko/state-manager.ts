@@ -1,5 +1,5 @@
 import { createStore as createVanilla} from 'zustand/vanilla'
-import { create, UseStore, StoreApi } from 'zustand'
+import { create, useStore, StoreApi } from 'zustand'
 import { deepCopy } from './copy'
 import { merge } from './merge'
 import type { Patch, Command } from './types'
@@ -38,7 +38,7 @@ export class StateManager<T extends object> {
   /**
    * A React hook for accessing the zustand store.
    */
-  public readonly useStore: UseStore<T>
+  public readonly useStore: (selector?) => T
 
   constructor(
     initialState: T,
@@ -50,7 +50,7 @@ export class StateManager<T extends object> {
     this._snapshot = deepCopy(initialState)
     this.initialState = deepCopy(initialState)
     this.store = createVanilla(() => this._state)
-    this.useStore = create(this.store)
+    this.useStore = (selector) => useStore(this.store, selector)
   }
 
   /**

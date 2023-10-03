@@ -101,7 +101,7 @@ export function Controls() {
   }, [])
 
   const handleTaperStartChange = React.useCallback((v: number[]) => {
-    app.patchStyleForAllShapes({ taperStart: v[0] === 100 ? true : v[0] })
+    app.patchStyleForAllShapes({ taperStart: v[0] })
   }, [])
 
   const handleEasingStartChange = React.useCallback((easing: string) => {
@@ -120,7 +120,7 @@ export function Controls() {
   }, [])
 
   const handleTaperEndChange = React.useCallback((v: number[]) => {
-    app.patchStyleForAllShapes({ taperEnd: v[0] === 100 ? true : v[0] })
+    app.patchStyleForAllShapes({ taperEnd: v[0] })
   }, [])
 
   const handleEasingEndChange = React.useCallback((easing: string) => {
@@ -255,24 +255,8 @@ export function Controls() {
         <hr />
         <Slider
           name="Taper Start"
-          value={[
-            Math.max(
-              0,
-              Math.min(
-                100,
-                style.taperStart === true
-                  ? 100
-                  : style.taperStart === false
-                  ? 0
-                  : style.taperStart
-              )
-            ),
-          ]}
-          label={
-            typeof style.taperStart === 'boolean'
-              ? style.taperStart.toString()
-              : undefined
-          }
+          value={[style.taperStart]}
+          label={style.taperStart.toString()}
           min={0}
           max={100}
           step={1}
@@ -306,19 +290,7 @@ export function Controls() {
         <hr />
         <Slider
           name="Taper End"
-          value={[
-            Math.max(
-              0,
-              Math.min(
-                100,
-                style.taperEnd === true
-                  ? 100
-                  : style.taperEnd === false
-                  ? 0
-                  : style.taperEnd
-              )
-            ),
-          ]}
+          value={[style.taperEnd]}
           min={0}
           max={100}
           step={1}
@@ -326,11 +298,7 @@ export function Controls() {
           onValueChange={handleTaperEndChange}
           onPointerDown={handleTaperEndChangeStart}
           onPointerUp={handleStyleChangeComplete}
-          label={
-            typeof style.taperEnd === 'boolean'
-              ? style.taperEnd.toString()
-              : undefined
-          }
+          label={style.taperEnd.toString()}
         />
         {style.taperEnd <= 0 && (
           <Checkbox
