@@ -14,6 +14,11 @@ export function useKeyboardShortcuts() {
     app.copySvg()
   })
 
+  useHotkeys('meta+,|ctrl+,', (e) => {
+    e.preventDefault()
+    app.togglePanelOpen()
+  }, { splitKey: '|'})
+
   useHotkeys('meta+shift+c,ctrl+shift+c', () => {
     app.copyStyles()
   })

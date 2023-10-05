@@ -5,6 +5,14 @@
 @layer base {
   :root {
     --whiteboard-height: 400px; /* keep in px, bc we parse this value in js */
+
+    /* COLORS */
+    /* (currently just used in the whiteboard CSS) */
+    --color-white: #fff;
+    --color-selected: #f1f1f1;
+    --color-border-gray: #d0d0d0;
+    --color-dark:	#1d1d1d;
+    --color-black: #000;
   }
   html {
     font-size: 18px;

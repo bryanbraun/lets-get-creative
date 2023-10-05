@@ -1,0 +1,53 @@
+.colorBar {
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem;
+  border-radius: 9999px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-gray);
+  gap: 0.125rem;
+}
+
+.color {
+  padding: 0.375rem;
+  border-radius: 9999px;
+}
+
+.colorInput {
+  /* visually hidden */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.colorInput:hover + label,
+.colorInput:checked + label {
+  box-shadow: 0px 0px 0px 6px var(--color-selected);
+}
+
+.colorLabel {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.colorLabelText {
+  /* visually hidden */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

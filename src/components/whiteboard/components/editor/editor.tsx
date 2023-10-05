@@ -17,11 +17,11 @@ export function Editor(): JSX.Element {
   const { page, pageState } = useAppState()
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} aria-hidden="true">
       <Renderer
         page={page}
         pageState={pageState}
-        shapeUtils={shapeUtils as any}
+        shapeUtils={shapeUtils}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}

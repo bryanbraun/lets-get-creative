@@ -1,0 +1,63 @@
+.devPanel {
+  position: absolute;
+  width: min(100%, 320px);
+  top: 0;
+  left: 0;
+  padding: 12px 12px 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom-right-radius: 16px;
+  box-shadow: 0px 0px 8px -4px rgba(0, 0, 0, 0.16),
+    0px 0px 36px 0px rgba(0, 0, 0, 0.08);
+  z-index: var(--w-z-dev-panel);
+  transform: translate(-100%, 0px);
+}
+
+.open {
+  transform: translate(0%, 0px);
+  transition: transform 0.2s;
+}
+
+.inputs {
+  display: grid;
+  grid-template-columns: 96px 1fr auto;
+  grid-auto-rows: 22px;
+  align-items: center;
+  column-gap: 16px;
+}
+
+.colors {
+  padding: 12px 0;
+}
+
+.hr {
+  grid-column: 1 / span 3;
+  height: 1px;
+  border: none;
+  background-color: gainsboro;
+  width: calc(100% + 24px);
+  margin-left: -12px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.buttonsRow {
+  display: flex;
+  height: 40px;
+}
+
+.rowButton {
+  cursor: pointer;
+  flex-grow: 2;
+  border: none;
+  background-color: transparent;
+  border: 2px solid transparent;
+}
+
+.rowButton:hover {
+  color: dodgerblue;
+}
+
+.rowButton:focus {
+  outline: none;
+  border: 2px solid dodgerblue;
+}

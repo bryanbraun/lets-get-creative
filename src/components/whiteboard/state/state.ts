@@ -8,10 +8,9 @@ import {
   Utils,
 } from '@tldraw/core'
 import { Vec } from '@tldraw/vec'
-import { StateManager } from '../rko'
+import { StateManager } from '../state-manager'
 import { draw, DrawUtil } from './shapes'
-import sample from './sample.json'
-import type { StateSelector } from 'zustand'
+import sample from './sample-0.json'
 import { copyTextToClipboard, pointInPolygon, getSvgString, getAppWidth, getAppHeight } from './utils'
 import { EASING_STRINGS } from './easings'
 
@@ -70,16 +69,7 @@ export class AppState extends StateManager<State> {
   constructor(...args: ConstructorParameters<typeof StateManager<State>>) {
     super(...args);
 
-    // ON READY
-    window['app'] = this
-    // We assert the type because it's imported from JSON
-    const sampleData = sample as Partial<DrawShape>[];
-    if (Object.values(this.state.page.shapes).length === 0) {
-      sampleData.forEach(shape => {
-        this.addShape(shape)
-      })
-      this.zoomToContent()
-    }
+    this.onReady();
   }
 
   shapeUtils = shapeUtils
@@ -99,6 +89,30 @@ export class AppState extends StateManager<State> {
     }
 
     return state
+  }
+
+  onReady = async () => {
+    window['app'] = this
+
+    // Randomly select the default background image
+    const NUMBER_OF_BACKGROUNDS = 3;
+    const backgroundNum = Math.floor(Math.random() * NUMBER_OF_BACKGROUNDS);
+    const backgroundFilename = `./background-${backgroundNum}.json`;
+
+    import(backgroundFilename)
+      .then(({ default: backgroundData }) => {
+        if (Object.values(this.state.page.shapes).length === 0) {
+          this.addShapes(backgroundData);
+          this.zoomToContent()
+        }
+      });
+
+    // We assert the type because it's imported from JSON
+    // const sampleData = sample as Partial<DrawShape>[];
+    // if (Object.values(this.state.page.shapes).length === 0) {
+    //   this.addShapes(sampleData);
+    //   this.zoomToContent()
+    // }
   }
 
   onPointerDown: TLPointerEventHandler = (info) => {
@@ -438,34 +452,37 @@ export class AppState extends StateManager<State> {
       })
   }
 
-  addShape = (shape: Partial<DrawShape>) => {
-    const newShape = draw.create({
-      id: Utils.uniqueId(),
-      parentId: 'page',
-      childIndex: 1,
-      point: [0, 0],
-      points: [],
-      style: this.state.appState.style,
-      ...shape,
-    })
+  addShapes = (shapesData: Partial<DrawShape>[]) => {
+    const shapes = {};
 
-    const bounds = Utils.getBoundsFromPoints(newShape.points)
+    shapesData.forEach(shapeData => {
+      const shape = draw.create({
+        id: Utils.uniqueId(),
+        parentId: 'page',
+        childIndex: 1,
+        point: [0, 0],
+        points: [],
+        style: this.state.appState.style,
+        ...shapeData,
+      })
 
-    const topLeft = [bounds.minX, bounds.minY]
+      const bounds = Utils.getBoundsFromPoints(shape.points)
+      const topLeft = [bounds.minX, bounds.minY]
 
-    newShape.points = newShape.points.map((pt, i) =>
-      Vec.sub(pt, topLeft).concat(pt[2] || 0.5, pt[3] || i * 10)
-    )
+      shape.points = shape.points.map((pt, i) =>
+        Vec.sub(pt, topLeft).concat(pt[2] || 0.5, pt[3] || i * 10)
+      )
+
+      shapes[shape.id] = shape;
+    });
 
     this.patchState({
       page: {
-        shapes: {
-          [newShape.id]: newShape,
-        },
+        shapes
       },
     })
 
-    return newShape
+    return shapes
   }
 
   erase = (point: number[]) => {
@@ -663,7 +680,7 @@ export class AppState extends StateManager<State> {
     const pageState = this.state.pageState
 
     if (shapes.length === 0) {
-      this.patchState({
+      return this.patchState({
         pageState: {
           camera: {
             zoom: 1,
@@ -764,6 +781,11 @@ export class AppState extends StateManager<State> {
 
   copySvg = () => {
     const shapes = Object.values(this.state.page.shapes)
+
+    if (shapes.length === 0) {
+      return
+    }
+
     const bounds = Utils.getCommonBounds(shapes.map(draw.getBounds))
     const svgString = getSvgString(shapes, bounds)
 
@@ -772,6 +794,11 @@ export class AppState extends StateManager<State> {
 
   downloadSvg = () => {
     const shapes = Object.values(this.state.page.shapes)
+
+    if (shapes.length === 0) {
+      return
+    }
+
     const bounds = Utils.getCommonBounds(shapes.map(draw.getBounds))
     const svgString = getSvgString(shapes, bounds)
 
@@ -837,6 +864,11 @@ export class AppState extends StateManager<State> {
       },
     })
   }
+
+  // Placeholder for debugging state changes.
+  // onStateDidChange = (state => {
+  //   console.log('State changed', state)
+  // })
 }
 
 export const app = new AppState(
@@ -847,8 +879,8 @@ export const app = new AppState(
 )
 
 export function useAppState(): State
-export function useAppState<K>(selector: StateSelector<State, K>): K
-export function useAppState<K>(selector?: StateSelector<State, K>) {
+export function useAppState<K>(selector: (s: State) => K): K
+export function useAppState<K>(selector?: (s: State) => K) {
   if (selector) {
     return app.useStore(selector)
   }

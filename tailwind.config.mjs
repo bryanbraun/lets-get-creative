@@ -7,16 +7,21 @@ export default {
 			cursive: ['Gaegu', 'cursive'],
 		},
 		colors: {
-			white: '#fff',
-			dark:	'#1d1d1d',
-			black: '#000',
+			"white": '#fff',
+			"selected": "#f1f1f1",
+			"border-gray": "#d0d0d0",
+			"dark":	'#1d1d1d',
+			"black": '#000',
+			"whiteboard": "#f8f9fa",
 		},
 		lineHeight: {
 			"leading-normal": 1.625
 		},
 		zIndex: {
-			'carousel': '1', // Found in the carousel component
+			'whiteboard': '1',
+			'whiteboard-overlay': '5',
 			'title': '10',
+			'edit-button': '20',
 		},
 		extend: {
 			height: {

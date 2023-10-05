@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Black",
+    "hex": "#000000"
+  },
+  {
+    "name": "Gray",
+    "hex": "#ADB5BD"
+  },
+  {
+    "name": "Purple",
+    "hex": "#673AB7"
+  },
+  {
+    "name": "Blue",
+    "hex": "#2A9FF4"
+  },
+  {
+    "name": "Turquoise",
+    "hex": "#00BCD4"
+  },
+  {
+    "name": "Green",
+    "hex": "#40C057"
+  },
+  {
+    "name": "Yellow",
+    "hex": "#FFC107"
+  },
+  {
+    "name": "Orange",
+    "hex": "#FF5722"
+  },
+  {
+    "name": "Red",
+    "hex": "#E91E63"
+  }
+]

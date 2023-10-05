@@ -11,7 +11,7 @@ import {
   intersectBoundsPolyline,
 } from '@tldraw/intersect'
 import { Vec } from '@tldraw/vec'
-import { getStroke } from '../../perfect-freehand'
+import { getStroke } from 'perfect-freehand'
 import type { DrawShape } from '../../types'
 import { EASINGS } from '../../state/easings'
 
