@@ -5,7 +5,12 @@ import creativityTools from "../../public/creativity-tools/data.json";
 import metadata from "../site-metadata.json";
 ---
 
-<Layout title={metadata.title} description={metadata.description}>
+<Layout
+  title={metadata.title}
+  description={metadata.description}
+  baseUrl={metadata.baseUrl}
+  ogImage={metadata.ogImage}
+>
   <!-- The header renders server-side (at build time) and is hydrated client-side -->
   <Header client:load title={metadata.title} />
 
