@@ -23,15 +23,22 @@
   summary::-webkit-details-marker {
     display: none;
   }
-}
 
-@layer components {
-  .card-border {
-    -moz-border-image: url(full-box.svg) 20 20 20 20 stretch stretch;
-    -webkit-border-image: url(full-box.svg) 20 20 20 20 stretch stretch;
-    -o-border-image: url(full-box.svg) 20 20 20 20 stretch stretch;
-    border-image: url(full-box.svg) 20 20 20 20 stretch stretch;
-    border-width: 20px 20px 20px 20px;
-    border-style: solid;
+  p {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+  }
+
+  ol {
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
+
+  li {
+    display: list-item;
   }
 }

@@ -10,9 +10,11 @@ export default {
 			"white": '#fff',
 			"selected": "#f1f1f1",
 			"border-gray": "#d0d0d0",
+			"marker-purple": "#673AB7",
 			"dark":	'#1d1d1d',
 			"black": '#000',
 			"whiteboard": "#f8f9fa",
+			"transparent": "transparent",
 		},
 		lineHeight: {
 			"leading-normal": 1.625
@@ -26,6 +28,9 @@ export default {
 		extend: {
 			height: {
 				"whiteboard": "var(--whiteboard-height)",
+			},
+			borderWidth: {
+				"20": "20px",
 			}
 		},
 	},

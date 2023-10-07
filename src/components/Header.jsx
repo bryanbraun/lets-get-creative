@@ -23,12 +23,9 @@ export default function Header({ title }) {
   }, []);
 
   return (
-    <header className="relative overflow-hidden bg-whiteboard border-b-8 [border-image:url(line-6-tidy.svg)_10_6_10_6_stretch_stretch]">
+    <header className="relative overflow-hidden bg-whiteboard border-b-8 [border-image:url(ink-border.svg)_10_6_10_6_stretch_stretch]">
       {!isEditing && (
-        <>
-          <PageTitle title={title} />
-          <div className="absolute z-whiteboard-overlay top-0 left-0 right-0 bottom-0"></div>
-        </>
+        <PageTitle title={title} />
       )}
 
       <div className="h-whiteboard">

@@ -1,0 +1,12 @@
+<!-- This image is used for the whiteboard cursor. We've base64-encoded the image in the
+     component's CSS to keep it encapsulated, but we keep this file around for reference. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none">
+  <g clip-path="url(#a)">
+    <path fill="#000" stroke="#fff" d="m2.02 16.675-.105.105-.03.146-1.332 6.358c-.15.636.02 1.216.484 1.679.463.463 1.043.634 1.679.484l6.358-1.331.146-.03.105-.106L24.587 8.718c.61-.61.913-1.372.913-2.253s-.303-1.644-.913-2.253l-2.799-2.8C21.178.805 20.416.5 19.535.5s-1.644.304-2.253.913L2.02 16.675Zm4.426.753L19.535 4.34l2.125 2.125L8.572 19.554l-2.126-2.126Z"/><path fill="#fff" d="m5.74 17.43 13.79-13.8 2.84 2.84-13.8 13.79-2.83-2.83Z"/>
+  </g>
+  <defs>
+    <clipPath id="a">
+      <path fill="#fff" d="M0 0h26v26H0z"/>
+    </clipPath>
+  </defs>
+</svg>

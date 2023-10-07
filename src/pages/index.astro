@@ -9,7 +9,7 @@ import metadata from "../site-metadata.json";
   <!-- The header renders server-side (at build time) and is hydrated client-side -->
   <Header client:load title={metadata.title} />
 
-  <main>
+  <main class="border border-transparent">
     <section class="my-8 px-3">
       <h2 class="text-2xl text-center">
         {metadata.description}
@@ -18,14 +18,79 @@ import metadata from "../site-metadata.json";
         <summary class="text-sm text-center underline cursor-pointer">
           tell me more
         </summary>
-        <div>more!</div>
+        <div class="m-auto max-w-2xl">
+          <p>
+            This page is designed to be a safe, bookmarkable, creativity
+            resource for kids and adults. The creativity tools below are
+            cross-disciplinary and cover a range of skill levels.
+          </p>
+
+          <p>
+            To bookmark this page, drag this link to your bookmarks bar: →
+            <a
+              class="no-underline border-marker-purple border-4 px-3 py-1 rounded text-marker-purple font-bold text-sm"
+              href="https://bryanbraun.com/lets-get-creative"
+            >
+              Let's Get Creative
+            </a>
+          </p>
+
+          <p>
+            In order for a tool to be added to this collection, it must meet the
+            following criteria:
+          </p>
+          <ol>
+            <li>
+              Online: accessible at a URL and usable in your web-browser
+              (Chromebook-friendly!)
+            </li>
+            <li>
+              Low friction: free to use and doesn't require an account (at least
+              for basic functionality)
+            </li>
+            <li>
+              Shareable: creations can be saved or shared (via share url,
+              downloadable image, etc)
+            </li>
+            <li>
+              High-quality: the tool is safe for all ages and doesn't have
+              pop-ups or excessive ads
+            </li>
+          </ol>
+
+          <p>
+            If you have a tool that you think should be included,
+            <a
+              class="underline"
+              href="https://github.com/bryanbraun/lets-get-creative/blob/main/CONTRIBUTING.md"
+              target="_blank"
+            >
+              follow these instructions to recommend it</a
+            >.
+          </p>
+
+          <p>
+            If you discover an issue with one of these tools (it no longer meets
+            the criteria, link is broken, etc), you can
+            <a
+              class="underline"
+              href="https://github.com/bryanbraun/lets-get-creative/issues"
+              target="_blank">report it here</a
+            >.
+          </p>
+          <p>
+            The tools in this collection were built by creative people from
+            across the internet and this site would not be possible without
+            their efforts. ❤️
+          </p>
+        </div>
       </details>
     </section>
 
     <ul role="list" class="flex flex-wrap justify-center">
       {
         creativityTools.map((tool) => (
-          <li class="flex-initial md:w-1/2 p-2 card-border">
+          <li class="flex-initial md:w-1/2 p-2 border-20 [border-image:url(ink-box.svg)_20_20_20_20_stretch_stretch]">
             <a href={tool.link} target="_blank">
               <img
                 src={"creativity-tools/" + (tool.image || "default.png")}
@@ -43,7 +108,7 @@ import metadata from "../site-metadata.json";
       <p>
         I'm adding new creativity tools as I find them. Subscribe to updates
         <a href="feed.json" target="_blank">
-          <span class="underline">via our feed</span>
+          <span class="underline">via the feed</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -67,22 +132,14 @@ import metadata from "../site-metadata.json";
           </a>
         </span>
       </p>
-      <p>
-        Want to recommend a creativity tool for this site?
-        <a
-          class="underline"
-          href="https://github.com/bryanbraun/lets-get-creative/blob/main/CONTRIBUTING.md"
-          target="_blank"
-        >
-          You can do that here</a
-        >.
-      </p>
     </div>
   </main>
 
-  <hr />
+  <hr
+    class="h-2 [background:no-repeat_center_/_356px_100%_url(ink-border.svg)] border-none"
+  />
 
-  <footer class="text-center my-6">
+  <footer class="text-center text-sm my-6">
     <p>
       Made by
       <a href="https://bryanbraun.com" class="underline" target="_blank">

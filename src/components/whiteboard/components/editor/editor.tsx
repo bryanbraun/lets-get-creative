@@ -17,7 +17,7 @@ export function Editor(): JSX.Element {
   const { page, pageState } = useAppState()
 
   return (
-    <div className={styles.container} aria-hidden="true">
+    <div className={styles.editor} aria-hidden="true">
       <Renderer
         page={page}
         pageState={pageState}

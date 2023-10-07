@@ -1,19 +1,26 @@
 # Let's Get Creative
 
-Details coming soon...
+Let's Get Creative is a collection of high-quality, free, online, creativity tools.
 
-## Contributing a creativity tool?
+The site is designed to be a safe, bookmarkable, creativity resource for kids and adults.
+
+For some background behind this project, see: https://www.bryanbraun.com/2019/07/16/daily-demos-a-ritual-for-raising-kids-that-create/
+
+## Want to contribute a creativity tool?
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Running this site
+## Credits
 
-All commands are run from the root of the project, from a terminal:
+* The header whiteboard is based on [Perfect Freehand](https://github.com/steveruizok/perfect-freehand) by [Steve Ruiz](https://www.steveruiz.me/).
+* The fonts are Gaegu by [Jikjisoft](https://jikjisoft.com/) and Comic Neue by [Craig Rozynski](https://www.craigrozynski.com/).
+* The icons come from Google's [Material Icons and Material Symbols](https://fonts.google.com/icons).
 
-| Command                   | Action                                       |
-| :------------------------ | :------------------------------------------- |
-| `npm install`             | Installs dependencies                        |
-| `npm run dev`             | Starts local dev server at `localhost:3000`  |
-| `npm run build`           | Build your production site to `./dist/`      |
-| `npm run preview`         | Preview your build locally, before deploying |
-| `npm run astro -- --help` | Get help using the Astro CLI                 |
+This project takes inspiration from the following projects:
+
+* [explorabl.es](https://explorabl.es/) by [Nicky Case](https://ncase.me/)
+* [neal.fun](https://neal.fun/) by [Neal Agarwal](https://nealagarwal.me/)
+* [oimo.io/works](https://oimo.io/works) by [Saharan](https://oimo.io/about)
+* [awesome](https://github.com/sindresorhus/awesome) by [Sindre Sorhus](https://sindresorhus.com/)
+
+Finally, THANK YOU to everyone who built the creativity tools featured on the site. The internet is a better place because of people like you. ❤️
