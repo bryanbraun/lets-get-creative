@@ -10,9 +10,11 @@ import {
 import { Vec } from '@tldraw/vec'
 import { StateManager } from '../state-manager'
 import { draw, DrawUtil } from './shapes'
-import sample from './sample-0.json'
 import { copyTextToClipboard, pointInPolygon, getSvgString, getAppWidth, getAppHeight } from './utils'
 import { EASING_STRINGS } from './easings'
+import bg0 from './background-0.js';
+import bg1 from './background-1.js';
+import bg2 from './background-2.js';
 
 export const shapeUtils: TLShapeUtilsMap<DrawShape> = {
   draw: new DrawUtil(),
@@ -94,25 +96,28 @@ export class AppState extends StateManager<State> {
   onReady = async () => {
     window['app'] = this
 
-    // Randomly select the default background image
+    // Randomly select the default background image. This probably bloats the bundle size
+    // a lot so we should come back in and optimize it later if needed.
+    let backgroundData = [];
     const NUMBER_OF_BACKGROUNDS = 3;
     const backgroundNum = Math.floor(Math.random() * NUMBER_OF_BACKGROUNDS);
-    const backgroundFilename = `./background-${backgroundNum}.json`;
 
-    import(backgroundFilename)
-      .then(({ default: backgroundData }) => {
-        if (Object.values(this.state.page.shapes).length === 0) {
-          this.addShapes(backgroundData);
-          this.zoomToContent()
-        }
-      });
+    switch (backgroundNum) {
+      case 0:
+        backgroundData = bg0;
+        break;
+      case 1:
+        backgroundData = bg1;
+        break;
+      case 2:
+        backgroundData = bg2;
+        break;
+    }
 
-    // We assert the type because it's imported from JSON
-    // const sampleData = sample as Partial<DrawShape>[];
-    // if (Object.values(this.state.page.shapes).length === 0) {
-    //   this.addShapes(sampleData);
-    //   this.zoomToContent()
-    // }
+    if (Object.values(this.state.page.shapes).length === 0) {
+      this.addShapes(backgroundData);
+      this.zoomToContent()
+    }
   }
 
   onPointerDown: TLPointerEventHandler = (info) => {
@@ -873,7 +878,7 @@ export class AppState extends StateManager<State> {
 
 export const app = new AppState(
   initialState,
-  'perfect-freehand',
+  'perfect-freehand', // TODO: change me?
   1,
   (p, n) => n
 )

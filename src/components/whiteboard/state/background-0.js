@@ -1,4 +1,4 @@
-[
+export default [
   {
     "id": "a19e39c7-4390-4b0c-0947-e1dc2e119f32",
     "point": [

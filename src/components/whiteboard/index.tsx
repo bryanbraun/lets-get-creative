@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Editor } from './components/editor'
 import { DevPanel } from './components/dev-panel'
 import { Controls } from './components/controls'

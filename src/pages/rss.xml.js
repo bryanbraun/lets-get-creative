@@ -18,7 +18,7 @@ export async function get(context) {
         url: `${metadata.baseUrl}/${tool.image || "default.png"}`,
         type: "image/png",
         // "length" is the number of bytes in the image file
-        length: (await fs.promises.stat(`./public/${tool.image || "default.png"}`)).size,
+        length: (await fs.promises.stat(`./public/creativity-tools/${tool.image || "default.png"}`)).size,
       }
       // Placeholder, in case I ever add categories:
       // categories: ['Category 1', 'Category 2', 'Category 3'],

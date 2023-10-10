@@ -80,8 +80,8 @@ export function getSvgString(shapes, bounds) {
 
   const svgString = s
     .serializeToString(svg)
-    .replaceAll('&#10;      ', '')
-    .replaceAll(/((\s|")[0-9]*\.[0-9]{2})([0-9]*)(\b|"|\))/g, '$1')
+    .replaceAll('&#10;      ', '') // remove newlines and indentation
+    .replaceAll(/((\s|")[0-9]*\.[0-9]{2})([0-9]*)(\b|"|\))/g, '$1') // truncate numbers down to two decimal points
 
   return svgString
 };
