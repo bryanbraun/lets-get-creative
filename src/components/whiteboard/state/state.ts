@@ -878,7 +878,7 @@ export class AppState extends StateManager<State> {
 
 export const app = new AppState(
   initialState,
-  'perfect-freehand', // TODO: change me?
+  'whiteboard',
   1,
   (p, n) => n
 )

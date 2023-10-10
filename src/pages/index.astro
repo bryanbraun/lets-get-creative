@@ -67,18 +67,16 @@ import metadata from "../site-metadata.json";
           </ol>
 
           <p>
-            If you have a tool that you think should be included,<a
+            If you have a tool that you think should be included <a
               class="underline"
               href="https://github.com/bryanbraun/lets-get-creative/blob/main/CONTRIBUTING.md"
-              target="_blank"
-            >
-              follow these instructions to recommend it</a
+              target="_blank">follow these instructions to recommend it</a
             >.
           </p>
 
           <p>
             If you discover an issue with one of these tools (it no longer meets
-            the criteria, link is broken, etc), you can<a
+            the criteria, link is broken, etc), you can <a
               class="underline"
               href="https://github.com/bryanbraun/lets-get-creative/issues"
               target="_blank">report it here</a
@@ -99,8 +97,11 @@ import metadata from "../site-metadata.json";
           <li class="creativity-tool">
             <a href={tool.link} target="_blank">
               <img
+                width="800"
+                height="200"
                 src={"creativity-tools/" + (tool.image || "default.png")}
                 alt={tool.name}
+                loading="lazy"
               />
               <h3 class="text-lg mt-2 font-bold">{tool.name}</h3>
               <p>{tool.description}</p>
