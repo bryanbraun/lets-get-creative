@@ -8,8 +8,8 @@ export async function get() {
     title: metadata.title,
     description: metadata.description,
     feed_url: `${metadata.baseUrl}/feed.json`,
-    favicon: `${metadata.baseUrl}/favicon-0.svg`,
-    icon: `${metadata.baseUrl}/banner-feed.png`,
+    favicon: `${metadata.baseUrl}/${metadata.favicon}`,
+    icon: `${metadata.baseUrl}/${metadata.squareImage}`,
     language: "en-US",
     authors: [{
       name: "Bryan Braun"

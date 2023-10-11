@@ -2,5 +2,7 @@
   "title": "Let's Get Creative",
   "description": "A collection of high-quality, free, online creativity tools.",
   "baseUrl": "https://bryanbraun.com/lets-get-creative",
-  "ogImage": "banner-og.png"
+  "ogImage": "banner-og.png",
+  "squareImage": "banner-square.png",
+  "favicon": "favicon-0.svg"
 }

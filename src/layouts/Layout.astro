@@ -5,10 +5,13 @@ interface Props {
   title: string;
   description: string;
   baseUrl: string;
+  favicon: string;
   ogImage: string;
+  squareImage: string;
 }
 
-const { title, description, baseUrl, ogImage } = Astro.props;
+const { title, description, baseUrl, favicon, ogImage, squareImage } =
+  Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -24,11 +27,17 @@ const { title, description, baseUrl, ogImage } = Astro.props;
     <meta property="og:url" content={baseUrl} />
     <meta property="og:type" content="website" />
 
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@BryanEBraun" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${baseUrl}/${squareImage}`} />
+
     <link
       id="favicon"
       rel="icon"
       type="image/svg+xml"
-      href={`${baseUrl}/favicon-0.svg`}
+      href={`${baseUrl}/${favicon}`}
     />
 
     <meta
@@ -40,7 +49,7 @@ const { title, description, baseUrl, ogImage } = Astro.props;
       rel="alternate"
       type="application/feed+json"
       title={title}
-      href="feed.json"
+      href={`${baseUrl}/feed.json`}
     />
     <meta name="generator" content={Astro.generator} />
 
