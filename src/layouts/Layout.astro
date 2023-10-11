@@ -20,8 +20,8 @@ const { title, description, baseUrl, ogImage } = Astro.props;
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:url" content={`${baseUrl}/${ogImage}`} />
+    <meta property="og:image" content={`${baseUrl}/${ogImage}`} />
+    <meta property="og:url" content={baseUrl} />
     <meta property="og:type" content="website" />
 
     <link
