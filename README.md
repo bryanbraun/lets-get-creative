@@ -6,7 +6,7 @@ Let's Get Creative is a collection of high-quality, free, online, creativity too
 
 [The website](https://www.bryanbraun.com/lets-get-creative) is designed to be a safe, bookmarkable, creativity resource for kids and adults.
 
-For some background behind this project, see: https://www.bryanbraun.com/2019/07/16/daily-demos-a-ritual-for-raising-kids-that-create/
+For some background behind this project, see: https://www.bryanbraun.com/2023/10/10/lets-get-creative/
 
 ## Want to contribute a creativity tool?
 

@@ -15,7 +15,7 @@ import metadata from "../site-metadata.json";
   <header class="h-whiteboard bg-whiteboard">
     <PageTitle title={metadata.title} />
     <!-- WhiteboardWrapper cannot be server-rendered because it has sub-components that are not server-renderable. -->
-    <WhiteboardWrapper client:only="react" />
+    <WhiteboardWrapper client:only="react" baseUrl={metadata.baseUrl} />
   </header>
 
   <main class="border border-transparent">

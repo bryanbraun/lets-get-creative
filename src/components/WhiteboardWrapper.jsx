@@ -1,8 +1,8 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect } from "react";
 import EditButton from "./EditButton";
 import Whiteboard from "./whiteboard";
 
-export default function WhiteboardWrapper() {
+export default function WhiteboardWrapper({ baseUrl }) {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEditing = () => {
@@ -14,7 +14,7 @@ export default function WhiteboardWrapper() {
     const NUMBER_OF_FAVICONS = 5;
     const num = Math.floor(Math.random() * NUMBER_OF_FAVICONS);
     const faviconEl = document.getElementById('favicon');
-    faviconEl.href = `favicon-${num}.svg`;
+    faviconEl.href = `${baseUrl}/favicon-${num}.svg`;
   }, []);
 
   // I know this is janky but if I alter the title as a side effect from here,
