@@ -5,13 +5,11 @@ interface Props {
   title: string;
   description: string;
   baseUrl: string;
-  favicon: string;
   ogImage: string;
   squareImage: string;
 }
 
-const { title, description, baseUrl, favicon, ogImage, squareImage } =
-  Astro.props;
+const { title, description, baseUrl, ogImage, squareImage } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -33,12 +31,7 @@ const { title, description, baseUrl, favicon, ogImage, squareImage } =
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${baseUrl}/${squareImage}`} />
 
-    <link
-      id="favicon"
-      rel="icon"
-      type="image/svg+xml"
-      href={`${baseUrl}/${favicon}`}
-    />
+    <link id="favicon" rel="icon" type="image/svg+xml" href="favicon-0.svg" />
 
     <meta
       name="viewport"

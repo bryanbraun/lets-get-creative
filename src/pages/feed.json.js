@@ -8,7 +8,7 @@ export async function get() {
     title: metadata.title,
     description: metadata.description,
     feed_url: `${metadata.baseUrl}/feed.json`,
-    favicon: `${metadata.baseUrl}/${metadata.favicon}`,
+    favicon: `${metadata.baseUrl}/favicon-0.svg`,
     icon: `${metadata.baseUrl}/${metadata.squareImage}`,
     language: "en-US",
     authors: [{
