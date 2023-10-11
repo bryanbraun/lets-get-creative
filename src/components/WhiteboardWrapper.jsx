@@ -22,11 +22,10 @@ export default function WhiteboardWrapper() {
   // That's important for SEO, screen readers, etc.
   useEffect(() => {
     const titleEl = document.getElementById('page-title');
-    // debugger;
     if (isEditing) {
-      titleEl.classList.add('hidden');
+      titleEl.classList.add('page-title--is-hidden');
     } else {
-      titleEl.classList.remove('hidden');
+      titleEl.classList.remove('page-title--is-hidden');
     }
   }, [isEditing]);
 
