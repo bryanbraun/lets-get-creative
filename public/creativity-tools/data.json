@@ -187,5 +187,12 @@
     "link": "https://web.blockbench.net/",
     "image": "block-bench.png",
     "dateAdded": "2023-08-12"
+  },
+  {
+    "name": "Mini Music Machine",
+    "description": "Polyrhythmic musical loop maker",
+    "link": "https://muted.io/mini-music-machine/",
+    "image": "mini-music-machine.png",
+    "dateAdded": "2023-10-13"
   }
 ]
