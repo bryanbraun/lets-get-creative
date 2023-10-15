@@ -11,7 +11,7 @@ const DoneIcon = () => (
   </svg>
 );
 
-export default function EditButton({ handleClick, isEditing }) {
+export function EditButton({ handleClick, isEditing }) {
   const text = isEditing ? "Done" : "Edit";
   const IconComponent = isEditing ? DoneIcon : EditIcon;
 
