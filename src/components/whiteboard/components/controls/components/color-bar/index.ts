@@ -1,1 +1,1 @@
-export * from './color-bar'
+export * from "./ColorBar";
