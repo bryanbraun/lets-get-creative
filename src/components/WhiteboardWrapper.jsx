@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import EditButton from "./EditButton";
-import Whiteboard from "./whiteboard";
+import { EditButton } from "./EditButton";
+import { Whiteboard } from "./whiteboard";
 
-export default function WhiteboardWrapper() {
+export function WhiteboardWrapper() {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEditing = () => {
