@@ -1,18 +1,7 @@
-import { Editor } from './components/Editor'
-import { DevPanel } from './components/DevPanel'
-import { Controls } from './components/Controls'
-import { useKeyboardShortcuts, useRecenterContentOnWindowResize } from './hooks'
-import styles from './Whiteboard.module.css';
+// We want Whiteboard to act as a modular, independent component, being
+// consumed by the rest of the app. Thus, we keep a barrel file here so
+// we can control its API more easily. We'll avoid barrel files for the
+// components internal to Whiteboard for the reasons described here:
+// https://marvinh.dev/blog/speeding-up-javascript-ecosystem-part-7/
 
-export function Whiteboard({ isEditing }): JSX.Element {
-  useKeyboardShortcuts()
-  useRecenterContentOnWindowResize()
-
-  return (
-    <div id="whiteboard" className={styles.whiteboard}>
-      <Editor />
-      {isEditing && (<DevPanel />)}
-      {isEditing && (<Controls />)}
-    </div>
-  )
-}
+export { Whiteboard } from './Whiteboard';

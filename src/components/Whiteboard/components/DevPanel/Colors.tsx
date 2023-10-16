@@ -1,5 +1,5 @@
 import styles from './Colors.module.css'
-import COLORS from '../../../../colors.json'
+import COLORS from '../../colors.json'
 
 interface ColorsProps {
   name: string

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styles from './Controls.module.css'
 import { app, useAppState } from '../../state'
-import { ColorBar } from './components/ColorBar'
-import { Menu } from './components/Menu'
+import { ColorBar } from './ColorBar'
+import { MenuBar } from './MenuBar'
 
 export function Controls() {
   const { style, tool } = useAppState((s) => s.appState)
@@ -37,7 +37,7 @@ export function Controls() {
         />
       </div>
       <div className={[styles.control, styles.bottomCenter].join(' ')}>
-        <Menu />
+        <MenuBar />
       </div>
     </>
   )

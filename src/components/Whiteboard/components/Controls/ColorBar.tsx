@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styles from './ColorBar.module.css'
-import COLORS from '../../../../colors.json'
+import COLORS from '../../colors.json'
 
 interface ColorBarProps {
   selectedColor: string

@@ -1,6 +1,6 @@
 import * as React from 'react'
-import styles from './Menu.module.css'
-import { app } from '../../../../state'
+import styles from './MenuBar.module.css'
+import { app } from '../../state'
 
 function DeleteSvg() {
   return (
@@ -34,7 +34,7 @@ function DownloadSvg() {
   )
 }
 
-export function Menu() {
+export function MenuBar() {
   return (
     <>
       <div
