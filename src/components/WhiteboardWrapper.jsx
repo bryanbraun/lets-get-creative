@@ -31,9 +31,7 @@ export function WhiteboardWrapper() {
 
   return (
     <>
-      <div>
-        <Whiteboard isEditing={isEditing} />
-      </div>
+      <Whiteboard isEditing={isEditing} />
 
       <div className="z-edit-button absolute bottom-2 right-2 bg-white border border-border-gray rounded-full">
         <EditButton isEditing={isEditing} handleClick={toggleEditing} />

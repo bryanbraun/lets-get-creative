@@ -178,13 +178,8 @@ export function DevPanel() {
     app.resetStyle('strokeWidth')
   }, [])
 
-  return (
-    <div
-      className={[
-        styles.devPanel,
-        appState.isPanelOpen ? styles.open : '',
-      ].join(' ')}
-    >
+  return appState.isPanelOpen ? (
+    <div className={styles.devPanel}>
       <div className={styles.inputs}>
         <Slider
           name="Size"
@@ -354,5 +349,5 @@ export function DevPanel() {
         </button>
       </div>
     </div>
-  )
+  ) : null
 }

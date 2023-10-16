@@ -9,12 +9,6 @@
   box-shadow: 0px 0px 8px -4px rgba(0, 0, 0, 0.16),
     0px 0px 36px 0px rgba(0, 0, 0, 0.08);
   z-index: var(--w-z-dev-panel);
-  transform: translate(-100%, 0px);
-}
-
-.open {
-  transform: translate(0%, 0px);
-  transition: transform 0.2s;
 }
 
 .inputs {
