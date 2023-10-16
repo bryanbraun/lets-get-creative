@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { EditButton } from "./EditButton";
-import { Whiteboard } from "./whiteboard";
+import { Whiteboard } from "./Whiteboard";
 
 export function WhiteboardWrapper() {
   const [isEditing, setIsEditing] = useState(false);
