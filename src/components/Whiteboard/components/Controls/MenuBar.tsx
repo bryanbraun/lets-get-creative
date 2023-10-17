@@ -1,4 +1,3 @@
-import * as React from 'react'
 import styles from './MenuBar.module.css'
 import { app } from '../../state'
 

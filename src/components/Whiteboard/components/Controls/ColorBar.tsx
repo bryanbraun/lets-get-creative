@@ -1,4 +1,3 @@
-import * as React from 'react'
 import styles from './ColorBar.module.css'
 import COLORS from '../../colors.json'
 
