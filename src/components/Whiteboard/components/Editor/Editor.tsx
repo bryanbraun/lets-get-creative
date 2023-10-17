@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Renderer } from '@tldraw/core'
 import { app, useAppState } from '../../state'
 import styles from './Editor.module.css'
