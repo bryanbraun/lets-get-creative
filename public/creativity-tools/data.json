@@ -194,5 +194,12 @@
     "link": "https://muted.io/mini-music-machine/",
     "image": "mini-music-machine.png",
     "dateAdded": "2023-10-13"
+  },
+  {
+    "name" : "PCEImage Editor",
+    "description": "Pixel-Character Encoded Image Editor",
+    "link" : "https://memalign.github.io/m/pceimage/index.html",
+    "image" : "PCEImage-Editor.png",
+    "dateAdded": "2023-10-17"
   }
 ]
