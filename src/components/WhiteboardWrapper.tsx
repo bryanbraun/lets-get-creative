@@ -3,7 +3,7 @@ import { EditButton } from "./EditButton";
 import { Whiteboard } from "./Whiteboard";
 
 export function WhiteboardWrapper() {
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
 
   const toggleEditing = () => {
     setIsEditing(!isEditing);
@@ -14,7 +14,10 @@ export function WhiteboardWrapper() {
     const NUMBER_OF_FAVICONS = 5;
     const num = Math.floor(Math.random() * NUMBER_OF_FAVICONS);
     const faviconEl = document.getElementById('favicon');
-    faviconEl.href = `favicon-${num}.svg`;
+    if (faviconEl) {
+      faviconEl.setAttribute('href', `favicon-${num}.svg`);
+    }
+
   }, []);
 
   // I know this is janky but if I alter the title as a side effect from here,
@@ -22,11 +25,14 @@ export function WhiteboardWrapper() {
   // That's important for SEO, screen readers, etc.
   useEffect(() => {
     const titleEl = document.getElementById('page-title');
-    if (isEditing) {
-      titleEl.classList.add('page-title--is-hidden');
-    } else {
-      titleEl.classList.remove('page-title--is-hidden');
+    if (titleEl) {
+      if (isEditing) {
+        titleEl.classList.add('page-title--is-hidden');
+      } else {
+        titleEl.classList.remove('page-title--is-hidden');
+      }
     }
+
   }, [isEditing]);
 
   return (

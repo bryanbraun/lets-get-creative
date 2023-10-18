@@ -3,11 +3,11 @@ import * as Label from '@radix-ui/react-label'
 import styles from './Select.module.css'
 
 interface SelectProps {
-  name: string
-  value: string
-  children: React.ReactNode
-  onDoubleClick: () => void
-  onValueChange: (value: string) => void
+  name: string;
+  value: string;
+  children: React.ReactNode;
+  onDoubleClick: () => void;
+  onValueChange: (value: string) => void;
 }
 
 export function Select({
