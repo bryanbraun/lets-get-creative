@@ -4,7 +4,11 @@ import { Controls } from './components/Controls/Controls'
 import { useKeyboardShortcuts, useRecenterContentOnWindowResize } from './hooks'
 import styles from './Whiteboard.module.css';
 
-export function Whiteboard({ isEditing }): JSX.Element {
+interface WhiteboardProps {
+  isEditing: boolean;
+}
+
+export function Whiteboard({ isEditing }: WhiteboardProps): JSX.Element {
   useKeyboardShortcuts()
   useRecenterContentOnWindowResize()
 

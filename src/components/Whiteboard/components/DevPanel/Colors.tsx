@@ -2,9 +2,9 @@ import styles from './Colors.module.css'
 import COLORS from '../../colors.json'
 
 interface ColorsProps {
-  name: string
-  selectedColor: string
-  onChange: (color: string) => void
+  name: string;
+  selectedColor: string;
+  onChange: (color: string) => void;
 }
 
 export function Colors(props: ColorsProps) {

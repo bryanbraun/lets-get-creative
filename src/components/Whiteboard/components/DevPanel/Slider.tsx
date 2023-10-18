@@ -10,10 +10,10 @@ import {
 import styles from './Slider.module.css'
 
 interface SliderProps extends SliderOwnProps {
-  value: number[]
-  onPointerDown: () => void
-  onPointerUp: () => void
-  onDoubleClick: () => void
+  value: number[];
+  onPointerDown: () => void;
+  onPointerUp: () => void;
+  onDoubleClick: () => void;
 }
 
 export function Slider({

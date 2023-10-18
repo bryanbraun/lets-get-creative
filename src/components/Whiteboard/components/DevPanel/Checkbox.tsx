@@ -7,7 +7,7 @@ import {
 import styles from './Checkbox.module.css'
 
 interface CheckboxProps extends CheckboxOwnProps {
-  name: string
+  name: string;
 }
 
 export function Checkbox(props: CheckboxProps) {
