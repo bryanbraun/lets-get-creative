@@ -1,2 +1,2 @@
-export * from './types'
-export * from './state-manager'
+export * from './types';
+export * from './state-manager';

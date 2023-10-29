@@ -1,29 +1,29 @@
-import { useHotkeys } from 'react-hotkeys-hook'
-import { app } from '../state'
+import { useHotkeys } from 'react-hotkeys-hook';
+import { app } from '../state';
 
 export function useKeyboardShortcuts() {
   useHotkeys('meta+z,ctrl+z', () => {
-    app.undo()
-  })
+    app.undo();
+  });
 
   useHotkeys('meta+shift+z,ctrl+shift+z', () => {
-    app.redo()
-  })
+    app.redo();
+  });
 
   useHotkeys('meta+c,ctrl+c', () => {
-    app.copySvg()
-  })
+    app.copySvg();
+  });
 
   useHotkeys('meta+,|ctrl+,', (e) => {
-    e.preventDefault()
-    app.togglePanelOpen()
-  }, { splitKey: '|'})
+    e.preventDefault();
+    app.togglePanelOpen();
+  }, { splitKey: '|'});
 
   useHotkeys('meta+shift+c,ctrl+shift+c', () => {
-    app.copyStyles()
-  })
+    app.copyStyles();
+  });
 
   useHotkeys('e,backspace', () => {
-    app.resetDoc()
-  })
+    app.resetDoc();
+  });
 }

@@ -7,7 +7,7 @@ export function WhiteboardWrapper() {
 
   const toggleEditing = () => {
     setIsEditing(!isEditing);
-  }
+  };
 
   // Randomize favicon on page load. I put it here because it's the top-level React component.
   useEffect(() => {

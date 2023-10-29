@@ -1,11 +1,11 @@
-import * as React from 'react'
-import { Colors } from './Colors'
-import { Checkbox } from './Checkbox'
-import { Select } from './Select'
-import { Slider } from './Slider'
-import styles from './DevPanel.module.css'
-import { app, useAppState } from '../../state'
-import type { Easing, State } from '../../types'
+import * as React from 'react';
+import { Colors } from './Colors';
+import { Checkbox } from './Checkbox';
+import { Select } from './Select';
+import { Slider } from './Slider';
+import styles from './DevPanel.module.css';
+import { app, useAppState } from '../../state';
+import type { Easing, State } from '../../types';
 
 const EASINGS = [
   'linear',
@@ -27,156 +27,156 @@ const EASINGS = [
   'easeInExpo',
   'easeOutExpo',
   'easeInOutExpo',
-]
+];
 
-const appStateSelector = (s: State) => s.appState
+const appStateSelector = (s: State) => s.appState;
 
 export function DevPanel() {
-  const appState = useAppState(appStateSelector)
-  const { style } = appState
+  const appState = useAppState(appStateSelector);
+  const { style } = appState;
 
   const handleSizeChangeStart = React.useCallback(() => {
-    app.setSnapshot()
-  }, [])
+    app.setSnapshot();
+  }, []);
 
   const handleSizeChange = React.useCallback((v: number[]) => {
-    app.patchStyleForAllShapes({ size: v[0] })
-  }, [])
+    app.patchStyleForAllShapes({ size: v[0] });
+  }, []);
 
   const handleStrokeWidthChangeStart = React.useCallback(() => {
-    app.setSnapshot()
-  }, [])
+    app.setSnapshot();
+  }, []);
 
   const handleStrokeWidthChange = React.useCallback((v: number[]) => {
-    app.patchStyleForAllShapes({ strokeWidth: v[0] })
-  }, [])
+    app.patchStyleForAllShapes({ strokeWidth: v[0] });
+  }, []);
 
   const handleThinningChangeStart = React.useCallback(() => {
-    app.setSnapshot()
-  }, [])
+    app.setSnapshot();
+  }, []);
 
   const handleThinningChange = React.useCallback((v: number[]) => {
-    app.patchStyleForAllShapes({ thinning: v[0] })
-  }, [])
+    app.patchStyleForAllShapes({ thinning: v[0] });
+  }, []);
 
   const handleStreamlineChangeStart = React.useCallback(() => {
-    app.setSnapshot()
-  }, [])
+    app.setSnapshot();
+  }, []);
 
   const handleStreamlineChange = React.useCallback((v: number[]) => {
-    app.patchStyleForAllShapes({ streamline: v[0] })
-  }, [])
+    app.patchStyleForAllShapes({ streamline: v[0] });
+  }, []);
 
   const handleSmoothingChangeStart = React.useCallback(() => {
-    app.setSnapshot()
-  }, [])
+    app.setSnapshot();
+  }, []);
 
   const handleSmoothingChange = React.useCallback((v: number[]) => {
-    app.patchStyleForAllShapes({ smoothing: v[0] })
-  }, [])
+    app.patchStyleForAllShapes({ smoothing: v[0] });
+  }, []);
 
   const handleEasingChange = React.useCallback((easing: string) => {
-    app.patchStyleForAllShapes({ easing: easing as Easing })
-  }, [])
+    app.patchStyleForAllShapes({ easing: easing as Easing });
+  }, []);
 
   const handleCapStartChange = React.useCallback(
     (v: boolean | 'indeterminate') => {
-      app.setNextStyleForAllShapes({ capStart: !!v })
+      app.setNextStyleForAllShapes({ capStart: !!v });
     },
     []
-  )
+  );
 
   const handleTaperStartChangeStart = React.useCallback(() => {
-    app.setSnapshot()
-  }, [])
+    app.setSnapshot();
+  }, []);
 
   const handleTaperStartChange = React.useCallback((v: number[]) => {
-    app.patchStyleForAllShapes({ taperStart: v[0] })
-  }, [])
+    app.patchStyleForAllShapes({ taperStart: v[0] });
+  }, []);
 
   const handleEasingStartChange = React.useCallback((easing: string) => {
-    app.patchStyleForAllShapes({ easingStart: easing as Easing })
-  }, [])
+    app.patchStyleForAllShapes({ easingStart: easing as Easing });
+  }, []);
 
   const handleCapEndChange = React.useCallback(
     (v: boolean | 'indeterminate') => {
-      app.setNextStyleForAllShapes({ capEnd: !!v })
+      app.setNextStyleForAllShapes({ capEnd: !!v });
     },
     []
-  )
+  );
 
   const handleTaperEndChangeStart = React.useCallback(() => {
-    app.setSnapshot()
-  }, [])
+    app.setSnapshot();
+  }, []);
 
   const handleTaperEndChange = React.useCallback((v: number[]) => {
-    app.patchStyleForAllShapes({ taperEnd: v[0] })
-  }, [])
+    app.patchStyleForAllShapes({ taperEnd: v[0] });
+  }, []);
 
   const handleEasingEndChange = React.useCallback((easing: string) => {
-    app.patchStyleForAllShapes({ easingEnd: easing as Easing })
-  }, [])
+    app.patchStyleForAllShapes({ easingEnd: easing as Easing });
+  }, []);
 
   const handleIsFilledChange = React.useCallback(
     (v: boolean | 'indeterminate') => {
-      app.setNextStyleForAllShapes({ isFilled: !!v })
+      app.setNextStyleForAllShapes({ isFilled: !!v });
     },
     []
-  )
+  );
 
   const handleStyleChangeComplete = React.useCallback(() => {
-    app.finishStyleUpdate()
-  }, [])
+    app.finishStyleUpdate();
+  }, []);
 
   const handleStrokeColorChange = React.useCallback((color: string) => {
-    app.patchStyle({ stroke: color })
-  }, [])
+    app.patchStyle({ stroke: color });
+  }, []);
 
   const handleFillColorChange = React.useCallback((color: string) => {
-    app.patchStyle({ fill: color })
-  }, [])
+    app.patchStyle({ fill: color });
+  }, []);
 
   // Resets
 
   const handleResetSize = React.useCallback(() => {
-    app.resetStyle('size')
-  }, [])
+    app.resetStyle('size');
+  }, []);
 
   const handleResetThinning = React.useCallback(() => {
-    app.resetStyle('thinning')
-  }, [])
+    app.resetStyle('thinning');
+  }, []);
 
   const handleResetStreamline = React.useCallback(() => {
-    app.resetStyle('streamline')
-  }, [])
+    app.resetStyle('streamline');
+  }, []);
 
   const handleResetSmoothing = React.useCallback(() => {
-    app.resetStyle('smoothing')
-  }, [])
+    app.resetStyle('smoothing');
+  }, []);
 
   const handleResetEasing = React.useCallback(() => {
-    app.resetStyle('easing')
-  }, [])
+    app.resetStyle('easing');
+  }, []);
 
   const handleResetTaperStart = React.useCallback(() => {
-    app.resetStyle('taperStart')
-  }, [])
+    app.resetStyle('taperStart');
+  }, []);
 
   const handleResetEasingStart = React.useCallback(() => {
-    app.resetStyle('easingStart')
-  }, [])
+    app.resetStyle('easingStart');
+  }, []);
 
   const handleResetTaperEnd = React.useCallback(() => {
-    app.resetStyle('taperEnd')
-  }, [])
+    app.resetStyle('taperEnd');
+  }, []);
 
   const handleResetEasingEnd = React.useCallback(() => {
-    app.resetStyle('easingEnd')
-  }, [])
+    app.resetStyle('easingEnd');
+  }, []);
 
   const handleResetStrokeWidth = React.useCallback(() => {
-    app.resetStyle('strokeWidth')
-  }, [])
+    app.resetStyle('strokeWidth');
+  }, []);
 
   return appState.isPanelOpen ? (
     <div className={styles.devPanel}>
@@ -349,5 +349,5 @@ export function DevPanel() {
         </button>
       </div>
     </div>
-  ) : null
+  ) : null;
 }

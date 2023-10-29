@@ -1,4 +1,4 @@
-import type { TLBinding, TLPage, TLPageState, TLShape } from '@tldraw/core'
+import type { TLBinding, TLPage, TLPageState, TLShape } from '@tldraw/core';
 
 export type Entries<T> = {
   [K in keyof T]: [K, T[K]]

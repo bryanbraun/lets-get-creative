@@ -1,2 +1,2 @@
-export * from './useKeyboardShortcuts'
-export * from './useRecenterContentOnWindowResize'
+export * from './useKeyboardShortcuts';
+export * from './useRecenterContentOnWindowResize';

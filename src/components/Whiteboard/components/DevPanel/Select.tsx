@@ -1,6 +1,6 @@
-import * as React from 'react'
-import * as Label from '@radix-ui/react-label'
-import styles from './Select.module.css'
+import * as React from 'react';
+import * as Label from '@radix-ui/react-label';
+import styles from './Select.module.css';
 
 interface SelectProps {
   name: string;
@@ -19,10 +19,10 @@ export function Select({
 }: SelectProps) {
   const handleValueChange = React.useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
-      onValueChange?.(e.currentTarget.value)
+      onValueChange?.(e.currentTarget.value);
     },
     [onValueChange]
-  )
+  );
 
   return (
     <>
@@ -35,5 +35,5 @@ export function Select({
         </select>
       </div>
     </>
-  )
+  );
 }

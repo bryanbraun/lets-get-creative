@@ -1,6 +1,6 @@
-import { Renderer } from '@tldraw/core'
-import { app, useAppState } from '../../state'
-import styles from './Editor.module.css'
+import { Renderer } from '@tldraw/core';
+import { app, useAppState } from '../../state';
+import styles from './Editor.module.css';
 
 export function Editor(): JSX.Element {
   const {
@@ -12,8 +12,8 @@ export function Editor(): JSX.Element {
     onPointerMove,
     onPointerUp,
     shapeUtils,
-  } = app
-  const { page, pageState } = useAppState()
+  } = app;
+  const { page, pageState } = useAppState();
 
   return (
     <div className={styles.editor} aria-hidden="true">
@@ -30,5 +30,5 @@ export function Editor(): JSX.Element {
         onPan={onPan}
       />
     </div>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import styles from './Colors.module.css'
-import COLORS from '../../colors.json'
+import styles from './Colors.module.css';
+import COLORS from '../../colors.json';
 
 interface ColorsProps {
   name: string;
@@ -26,9 +26,9 @@ export function Colors(props: ColorsProps) {
               }}
               onClick={() => props.onChange(color.hex)}
             />
-          )
+          );
         })}
       </div>
     </>
-  )
+  );
 }

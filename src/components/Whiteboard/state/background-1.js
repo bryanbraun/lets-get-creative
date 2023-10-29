@@ -1295,4 +1295,4 @@ export default [
       "fill": "#FF5722"
     }
   }
-]
+];

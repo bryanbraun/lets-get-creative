@@ -1,4 +1,4 @@
-import type { Easing } from '../types'
+import type { Easing } from '../types';
 
 export const EASINGS: Record<Easing, (t: number) => number> = {
   linear: (t) => t,
@@ -30,7 +30,7 @@ export const EASINGS: Record<Easing, (t: number) => number> = {
       : t < 0.5
       ? Math.pow(2, 20 * t - 10) / 2
       : (2 - Math.pow(2, -20 * t + 10)) / 2,
-}
+};
 
 export const EASING_STRINGS: Record<Easing, string> = {
   linear: `(t) => t`,
@@ -59,4 +59,4 @@ export const EASING_STRINGS: Record<Easing, string> = {
       : t < 0.5
       ? Math.pow(2, 20 * t - 10) / 2
       : (2 - Math.pow(2, -20 * t + 10)) / 2`,
-}
+};

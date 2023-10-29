@@ -1,5 +1,5 @@
-import styles from './ColorBar.module.css'
-import COLORS from '../../colors.json'
+import styles from './ColorBar.module.css';
+import COLORS from '../../colors.json';
 
 interface ColorBarProps {
   selectedColor: string
@@ -35,8 +35,8 @@ export function ColorBar({
               <span className={styles.colorLabelText}>{color.name}</span>
             </label>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

@@ -1,16 +1,16 @@
-import * as React from 'react'
-import styles from './Controls.module.css'
-import { app, useAppState } from '../../state'
-import { ColorBar } from './ColorBar'
-import { MenuBar } from './MenuBar'
+import * as React from 'react';
+import styles from './Controls.module.css';
+import { app, useAppState } from '../../state';
+import { ColorBar } from './ColorBar';
+import { MenuBar } from './MenuBar';
 
 export function Controls() {
   // const { style, tool } = useAppState((s) => s.appState)
-  const { style } = useAppState((s) => s.appState)
+  const { style } = useAppState((s) => s.appState);
 
   const handleFillColorChange = React.useCallback((color: string) => {
-    app.patchStyle({ fill: color })
-  }, [])
+    app.patchStyle({ fill: color });
+  }, []);
 
   return (
     <>
@@ -41,5 +41,5 @@ export function Controls() {
         <MenuBar />
       </div>
     </>
-  )
+  );
 }

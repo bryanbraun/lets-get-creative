@@ -16,7 +16,6 @@
     ],
     "ignorePatterns": ["dist/"],
     "rules": {
-      // @TODO: enable additional rules
-      // "semi": ["error", "always"]
+      "semi": ["error", "always"]
     }
   }

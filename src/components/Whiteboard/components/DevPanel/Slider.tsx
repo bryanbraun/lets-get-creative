@@ -1,13 +1,13 @@
-import * as React from 'react'
-import * as Label from '@radix-ui/react-label'
+import * as React from 'react';
+import * as Label from '@radix-ui/react-label';
 import {
   Root,
   Track,
   Range,
   Thumb,
   SliderProps as SliderOwnProps,
-} from '@radix-ui/react-slider'
-import styles from './Slider.module.css'
+} from '@radix-ui/react-slider';
+import styles from './Slider.module.css';
 
 interface SliderProps extends SliderOwnProps {
   value: number[];
@@ -29,10 +29,10 @@ export function Slider({
 }: SliderProps) {
   const handleValueChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      onValueChange?.([+e.currentTarget.value])
+      onValueChange?.([+e.currentTarget.value]);
     },
     [onValueChange]
-  )
+  );
 
   return (
     <>
@@ -71,5 +71,5 @@ export function Slider({
         id={props.name}
       />
     </>
-  )
+  );
 }
