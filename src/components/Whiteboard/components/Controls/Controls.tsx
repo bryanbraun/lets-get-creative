@@ -5,7 +5,8 @@ import { ColorBar } from './ColorBar'
 import { MenuBar } from './MenuBar'
 
 export function Controls() {
-  const { style, tool } = useAppState((s) => s.appState)
+  // const { style, tool } = useAppState((s) => s.appState)
+  const { style } = useAppState((s) => s.appState)
 
   const handleFillColorChange = React.useCallback((color: string) => {
     app.patchStyle({ fill: color })

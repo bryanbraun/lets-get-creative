@@ -1,3 +1,6 @@
+import type { DrawShape } from "../types"
+import type { TLBounds } from '@tldraw/core'
+
 function cross(x: number[], y: number[], z: number[]): number {
   return (y[0] - x[0]) * (z[1] - x[1]) - (z[0] - x[0]) * (y[1] - x[1])
 }
@@ -19,7 +22,7 @@ export function pointInPolygon(p: number[], points: number[][]): boolean {
   return wn !== 0
 }
 
-export function getSvgString(shapes, bounds) {
+export function getSvgString(shapes:DrawShape[], bounds: TLBounds) {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
   const padding = 40
 
@@ -84,7 +87,7 @@ export function getSvgString(shapes, bounds) {
     .replaceAll(/((\s|")[0-9]*\.[0-9]{2})([0-9]*)(\b|"|\))/g, '$1') // truncate numbers down to two decimal points
 
   return svgString
-};
+}
 
 export function copyTextToClipboard(string: string) {
   try {

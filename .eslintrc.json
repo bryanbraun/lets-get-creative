@@ -5,13 +5,18 @@
       "es6": true,
       "node": true
     },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 2018,
-      "sourceType": "module"
-    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
     "ignorePatterns": ["dist/"],
     "rules": {
-
+      // @TODO: enable additional rules
+      // "semi": ["error", "always"]
     }
   }

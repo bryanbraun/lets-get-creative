@@ -37,19 +37,18 @@ export class StateManager<T extends object> {
   /**
    * A React hook for accessing the zustand store.
    */
-  public readonly useStore: (selector?) => T
+  public readonly useStore: <K>(selector?: (state: T) => K) => T | K
+  // public readonly useStore: <T>() => K
 
-  constructor(
-    initialState: T,
-    id?: string,
-    version?: number,
-    update?: (prev: T, next: T, prevVersion: number) => T
-  ) {
+  constructor(initialState: T) {
     this._state = deepCopy(initialState)
     this._snapshot = deepCopy(initialState)
     this.initialState = deepCopy(initialState)
     this.store = createVanilla(() => this._state)
-    this.useStore = (selector) => useStore(this.store, selector)
+
+    this.useStore = <K>(selector?: (state: T) => K): T | K => {
+      return selector ? useStore(this.store, selector): useStore(this.store)
+    }
   }
 
   /**
@@ -59,9 +58,8 @@ export class StateManager<T extends object> {
    * @param id (optional) An id for the patch.
    */
   private applyPatch = (patch: Patch<T>, id?: string) => {
-    const prev = this._state
     const next = merge(this._state, patch)
-    const final = this.cleanup(next, prev, patch, id)
+    const final = this.cleanup(next)
     if (this.onStateWillChange) {
       this.onStateWillChange(final, id)
     }
@@ -79,12 +77,9 @@ export class StateManager<T extends object> {
    * Perform any last changes to the state before updating.
    * Override this on your extending class.
    * @param nextState The next state.
-   * @param prevState The previous state.
-   * @param patch The patch that was just applied.
-   * @param id (optional) An id for the just-applied patch.
    * @returns The final new state to apply.
    */
-  protected cleanup = (nextState: T, prevState: T, patch: Patch<T>, id?: string): T => nextState
+  protected cleanup = (nextState: T): T => nextState
 
   /**
    * A life-cycle method called when the state is about to change.
@@ -120,8 +115,8 @@ export class StateManager<T extends object> {
    * @param state The new state.
    * @param id An id for this change.
    */
-  protected replaceState = (state: T, id?: string): this => {
-    const final = this.cleanup(state, this._state, state, id)
+  protected replaceState = (state: T): this => {
+    const final = this.cleanup(state)
     if (this.onStateWillChange) {
       this.onStateWillChange(final, 'replace')
     }

@@ -1,3 +1,8 @@
+// Disabling no-explicit-any for this file since it was pulled in
+// from another project and I'm not interested in fixing it myself.
+//
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * Deep copy function for TypeScript.
  * @param T Generic type of target/copied value.
@@ -5,6 +10,7 @@
  * @see Source project, ts-deeply https://github.com/ykdr2017/ts-deepcopy
  * @see Code pen https://codepen.io/erikvullings/pen/ejyBYg
  */
+
 export function deepCopy<T>(target: T): T {
   if (target === null) {
     return target

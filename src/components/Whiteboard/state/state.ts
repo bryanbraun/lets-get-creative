@@ -13,8 +13,13 @@ import { draw, DrawUtil } from './shapes'
 import { copyTextToClipboard, pointInPolygon, getSvgString, getAppWidth, getAppHeight } from './utils'
 import { EASING_STRINGS } from './easings'
 import bg0 from './background-0.js';
-import bg1 from './background-1.js';
-import bg2 from './background-2.js';
+// Unused for now: alternative backgrounds
+// import bg1 from './background-1.js';
+// import bg2 from './background-2.js';
+
+declare const window: {
+  Whiteboard: AppState;
+} & Window;
 
 export const shapeUtils: TLShapeUtilsMap<DrawShape> = {
   draw: new DrawUtil(),
@@ -82,7 +87,7 @@ export class AppState extends StateManager<State> {
     startTime: 0,
   }
 
-  cleanup = (state: State) => {
+  override cleanup = (state: State) => {
     for (const id in state.page.shapes) {
       if (!state.page.shapes[id]) {
         // Removes any shapes that that have a falsy (undefined?) value
@@ -94,28 +99,30 @@ export class AppState extends StateManager<State> {
   }
 
   onReady = async () => {
-    window['app'] = this
+    window.Whiteboard = this
 
-    // Randomly select the default background image. This probably bloats the bundle size
+    // Unused for now:
+    // Randomly select the background image. This probably bloats the bundle size
     // a lot so we should come back in and optimize it later if needed.
-    let backgroundData = [];
-    const NUMBER_OF_BACKGROUNDS = 3;
-    const backgroundNum = Math.floor(Math.random() * NUMBER_OF_BACKGROUNDS);
-
-    switch (backgroundNum) {
-      case 0:
-        backgroundData = bg0;
-        break;
-      case 1:
-        backgroundData = bg1;
-        break;
-      case 2:
-        backgroundData = bg2;
-        break;
-    }
+    //
+    // let backgroundData = [];
+    // const NUMBER_OF_BACKGROUNDS = 3;
+    // const backgroundNum = Math.floor(Math.random() * NUMBER_OF_BACKGROUNDS);
+    // switch (backgroundNum) {
+    //   case 0:
+    //     backgroundData = bg0;
+    //     break;
+    //   case 1:
+    //     backgroundData = bg1;
+    //     break;
+    //   case 2:
+    //     backgroundData = bg2;
+    //     break;
+    // }
+    const backgroundData = bg0;
 
     if (Object.values(this.state.page.shapes).length === 0) {
-      this.addShapes(backgroundData);
+      this.addShapes(backgroundData as Partial<DrawShape>[])
       this.zoomToContent()
     }
   }
@@ -458,7 +465,9 @@ export class AppState extends StateManager<State> {
   }
 
   addShapes = (shapesData: Partial<DrawShape>[]) => {
-    const shapes = {};
+    const shapes: {
+      [key: string]: Partial<DrawShape>,
+    } = {};
 
     shapesData.forEach(shapeData => {
       const shape = draw.create({
@@ -876,18 +885,10 @@ export class AppState extends StateManager<State> {
   // })
 }
 
-export const app = new AppState(
-  initialState,
-  'whiteboard',
-  1,
-  (p, n) => n
-)
+export const app = new AppState(initialState)
 
 export function useAppState(): State
 export function useAppState<K>(selector: (s: State) => K): K
-export function useAppState<K>(selector?: (s: State) => K) {
-  if (selector) {
-    return app.useStore(selector)
-  }
-  return app.useStore()
+export function useAppState<K>(selector?: (s: State) => K): State | K {
+  return selector ? app.useStore(selector) : app.useStore()
 }
