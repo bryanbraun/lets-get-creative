@@ -201,5 +201,12 @@
     "link" : "https://memalign.github.io/m/pceimage/index.html",
     "image" : "PCEImage-Editor.png",
     "dateAdded": "2023-10-17"
+  },
+  {
+    "name" : "NoiseCraft",
+    "description": "A node-based modular sound synthesizer.",
+    "link" : "https://noisecraft.app/",
+    "image" : "noisecraft.png",
+    "dateAdded": "2023-11-01"
   }
 ]
