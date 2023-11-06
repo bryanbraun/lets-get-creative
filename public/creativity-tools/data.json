@@ -208,5 +208,12 @@
     "link" : "https://noisecraft.app/",
     "image" : "noisecraft.png",
     "dateAdded": "2023-11-01"
+  },
+  {
+    "name": "Decker",
+    "description": "A multimedia sketchpad similar to HyperCard.",
+    "link": "https://beyondloom.com/decker/index.html",
+    "image": "decker.png",
+    "dateAdded": "2023-11-05"
   }
 ]
