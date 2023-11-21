@@ -215,5 +215,12 @@
     "link": "https://beyondloom.com/decker/index.html",
     "image": "decker.png",
     "dateAdded": "2023-11-05"
+  },
+  {
+    "name": "Europeana",
+    "description": "Curate digital art galleries online using European digitised cultural heritage.",
+    "link": "https://www.europeana.eu",
+    "image": "europeana.png",
+    "dateAdded": "2023-11-21"
   }
 ]
