@@ -215,5 +215,19 @@
     "link": "https://beyondloom.com/decker/index.html",
     "image": "decker.png",
     "dateAdded": "2023-11-05"
+  },
+  {
+    "name" : "Sand Art",
+    "description": "Create sandscapes by pouring colored sand.",
+    "link" : "https://sandart.app/",
+    "image" : "sand-art.png",
+    "dateAdded": "2023-12-08"
+  },
+  {
+    "name" : "Bomomo",
+    "description": "A drawing app for creating abstract art with dynamic brushes.",
+    "link" : "https://bomomo.com/",
+    "image" : "bomomo.png",
+    "dateAdded": "2023-12-08"
   }
 ]
