@@ -229,5 +229,26 @@
     "link" : "https://bomomo.com/",
     "image" : "bomomo.png",
     "dateAdded": "2023-12-08"
+  },
+  {
+    "name" : "Silk",
+    "description": "A tool for making flowing generative art.",
+    "link" : "http://weavesilk.com/",
+    "image" : "silk.png",
+    "dateAdded": "2024-01-01"
+  },
+  {
+    "name" : "Omni",
+    "description": "An interactive keyboard for exploring musical scales.",
+    "link" : "https://femurdesign.com/omni/",
+    "image" : "omni.png",
+    "dateAdded": "2024-01-01"
+  },
+  {
+    "name": "Mutsuacen",
+    "description": "Create animated and interactive drawings.",
+    "link": "https://mutsuacen.com/",
+    "image": "mutsuacen.png",
+    "dateAdded": "2024-01-01"
   }
 ]
