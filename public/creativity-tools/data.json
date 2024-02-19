@@ -250,5 +250,12 @@
     "link": "https://mutsuacen.com/",
     "image": "mutsuacen.png",
     "dateAdded": "2024-01-01"
+  },
+  {
+    "name": "Sandboxels",
+    "description": "A falling-sand simulator with over 500 elements to play with.",
+    "link": "https://sandboxels.r74n.com/",
+    "image": "sandboxels.png",
+    "dateAdded": "2024-02-19"
   }
 ]
