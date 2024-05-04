@@ -257,5 +257,19 @@
     "link": "https://sandboxels.r74n.com/",
     "image": "sandboxels.png",
     "dateAdded": "2024-02-19"
+  },
+  {
+    "name": "Animated Drawings",
+    "description": "Bring children's drawings to life.",
+    "link": "https://sketch.metademolab.com/",
+    "image": "animated-drawings.png",
+    "dateAdded": "2024-05-04"
+  },
+  {
+    "name": "Minimator",
+    "description": "A minimalist drawing app for line art using lines and quarter circles.",
+    "link": "https://minimator.app/",
+    "image": "minimator.png",
+    "dateAdded": "2024-05-04"
   }
 ]
