@@ -271,5 +271,12 @@
     "link": "https://minimator.app/",
     "image": "minimator.png",
     "dateAdded": "2024-05-04"
+  },
+  {
+    "name": "108",
+    "description": "A minimal beat machine in the browser .",
+    "link": "https://martinwecke.de/108/",
+    "image": "108.png",
+    "dateAdded": "2024-06-08"
   }
 ]
