@@ -231,6 +231,13 @@
     "dateAdded": "2023-12-08"
   },
   {
+    "name": "108",
+    "description": "A minimal beat machine in the browser .",
+    "link": "https://martinwecke.de/108/",
+    "image": "108.png",
+    "dateAdded": "2024-06-08"
+  },
+  {
     "name" : "Silk",
     "description": "A tool for making flowing generative art.",
     "link" : "http://weavesilk.com/",
@@ -273,10 +280,17 @@
     "dateAdded": "2024-05-04"
   },
   {
-    "name": "108",
-    "description": "A minimal beat machine in the browser .",
-    "link": "https://martinwecke.de/108/",
-    "image": "108.png",
-    "dateAdded": "2024-06-08"
+    "name": "Inspiral",
+    "description": "Make spiral art with a pen and interlocking gears.",
+    "link": "https://nathanfriend.io/inspiral-web/",
+    "image": "inspiral.png",
+    "dateAdded": "2024-08-27"
+  },
+  {
+    "name": "Peel.fm",
+    "description": "A little drum machine in your browser.",
+    "link": "https://peel.fm/",
+    "image": "peel.png",
+    "dateAdded": "2024-08-27"
   }
 ]
