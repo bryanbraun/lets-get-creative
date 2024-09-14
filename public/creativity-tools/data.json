@@ -292,5 +292,19 @@
     "link": "https://peel.fm/",
     "image": "peel.png",
     "dateAdded": "2024-08-27"
+  },
+  {
+    "name": "Uji",
+    "description": "A minimalist generative art thing.",
+    "link": "https://doersino.github.io/uji/",
+    "image": "uji.png",
+    "dateAdded": "2024-09-13"
+  },
+  {
+    "name": "ASCII Art Paint",
+    "description": "An ASCII-graphics editor.",
+    "link": "https://kirilllive.github.io/ASCII_Art_Paint/ascii_paint.html",
+    "image": "ascii-art-paint.png",
+    "dateAdded": "2024-09-13"
   }
 ]
