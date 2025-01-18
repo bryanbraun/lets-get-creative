@@ -306,5 +306,26 @@
     "link": "https://kirilllive.github.io/ASCII_Art_Paint/ascii_paint.html",
     "image": "ascii-art-paint.png",
     "dateAdded": "2024-09-13"
+  },
+  {
+    "name": "SnowDays",
+    "description": "Make paper snowflakes and contribute them to a worldwide collection.",
+    "link": "http://snowdays.me/",
+    "image": "snowdays.jpg",
+    "dateAdded": "2025-01-18"
+  },
+  {
+    "name": "Rooms",
+    "description": "Create interactive virtual rooms using an library of tools and assets.",
+    "link": "https://rooms.xyz/",
+    "image": "rooms.png",
+    "dateAdded": "2025-01-18"
+  },
+  {
+    "name": "Marble Run",
+    "description": "Create a track for a marble to roll on.",
+    "link": "https://www.marblerun.at",
+    "image": "marble-run.png",
+    "dateAdded": "2025-01-18"
   }
 ]
