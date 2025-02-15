@@ -327,5 +327,12 @@
     "link": "https://www.marblerun.at",
     "image": "marble-run.png",
     "dateAdded": "2025-01-18"
+  },
+  {
+    "name": "Thirty-dollar website",
+    "description": "Make music using memes and actions.",
+    "link": "https://thirtydollar.website/",
+    "image": "thirty-dollar-website.png",
+    "dateAdded": "2025-02-14"
   }
 ]
