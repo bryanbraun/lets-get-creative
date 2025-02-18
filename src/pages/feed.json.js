@@ -24,6 +24,7 @@ export async function get() {
         summary: tool.description,
         content_text: tool.description,
         image: `${metadata.baseUrl}/creativity-tools/${tool.image || "default.png"}`,
+        banner_image: `${metadata.baseUrl}/creativity-tools/${tool.image || "default.png"}`,
         date_published: new Date(tool.dateAdded).toISOString(),
         // Placeholder, in case I ever add tags / categories:
         // tags: ['tag1', 'tag2', 'tag3']

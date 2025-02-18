@@ -334,5 +334,26 @@
     "link": "https://thirtydollar.website/",
     "image": "thirty-dollar-website.png",
     "dateAdded": "2025-02-14"
+  },
+  {
+    "name": "Jazzari",
+    "description": "A programmable band in your browser.",
+    "link": "https://jackschaedler.github.io/jazzari/index.html",
+    "image": "jazzari.png",
+    "dateAdded": "2025-02-18"
+  },
+  {
+    "name": "DustSim",
+    "description": "A physics sandbox that simulates particles and gravity.",
+    "link": "https://www.kodub.com/apps/dustsim",
+    "image": "dustsim.png",
+    "dateAdded": "2025-02-18"
+  },
+  {
+    "name": "PolyTrack",
+    "description": "Time-trial racing with a custom track editor.",
+    "link": "https://www.kodub.com/apps/polytrack",
+    "image": "polytrack.png",
+    "dateAdded": "2025-02-18"
   }
 ]
