@@ -355,5 +355,12 @@
     "link": "https://www.kodub.com/apps/polytrack",
     "image": "polytrack.png",
     "dateAdded": "2025-02-18"
+  },
+  {
+    "name": "LudoTune",
+    "description": "A 3D musical toy for making music with cubes.",
+    "link": "https://ludotune.com/",
+    "image": "ludotune.png",
+    "dateAdded": "2025-03-12"
   }
 ]
