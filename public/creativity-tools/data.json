@@ -362,5 +362,12 @@
     "link": "https://ludotune.com/",
     "image": "ludotune.png",
     "dateAdded": "2025-03-12"
+  },
+  {
+    "name": "Collagedle",
+    "description": "Cut up four daily photos and arrange the scraps into a collage.",
+    "link": "https://collagedle.com/",
+    "image": "collagedle.jpg",
+    "dateAdded": "2026-11-24"
   }
 ]
